@@ -15,7 +15,8 @@ module.exports = {
     extend: {
       colors :{
         'pizza_black': '#130912',
-        'pizza_dark': '#f5f5f5',
+        'pizza_black': '#242424',
+        // 'pizza_dark': '#f5f5f5',
         'pizza_gray': '#767676',
 
 

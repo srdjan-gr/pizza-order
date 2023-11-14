@@ -1,4 +1,5 @@
 import Header from '@/components/Header'
+import Hero from '@/components/Hero'
 import React from 'react'
 
 const page = () => {
@@ -7,8 +8,9 @@ const page = () => {
       <nav className='w-full m-auto'>
         <Header />
       </nav>
-      <main className='max-w-7xl m-auto'>
 
+      <main className='m-auto'>
+        <Hero />
       </main>
     </>
   )
