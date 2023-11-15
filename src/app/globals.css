@@ -7,7 +7,7 @@
 } */
 
 .link_hover {
-    @apply hover:text-gray-700
+    @apply hover:text-gray-500
 }
 
 .btn_main {

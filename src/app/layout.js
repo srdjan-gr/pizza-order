@@ -14,8 +14,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={` text-pizza_black text-sm`} >
+    <html lang="en" data-theme="light">
+      <body className={` text-pizza_black text-sm bg-white`} >
         {children}
       </body>
     </html>
