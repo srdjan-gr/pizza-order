@@ -19,7 +19,7 @@ const Hero = () => {
 
                 <p className='w-1/3 mt-5 text-lg'>Our online platform offers a premium selection, delivery and taste to place Perfect Pizza directly to your table. Try it now.</p>
 
-                <div className="mt-10 btn_main bg-pizza_green-500 hover:bg-pizza_green-400 text-white flex justify-center items-center cursor-pointer gap-2 w-[170px]">
+                <div className="mt-10 btn_main bg-pizza_green-500 hover:bg-pizza_green-400 text-white cursor-pointer gap-2 w-[180px]">
                     <Link href={'/'}>Order Now </Link>
                     <ArrowRight className='w-6 h-6 ' />
                 </div>

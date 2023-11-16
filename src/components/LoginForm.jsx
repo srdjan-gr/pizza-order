@@ -48,12 +48,12 @@ const LoginForm = () => {
                   className="input input-bordered w-full max-w-xs input-md rounded-xl"  
                 />
             }
-               {
-                !seePass ?
-                    <IoEyeOffOutline 
-                        className='absolute right-3 top-[51px] text-xl text-gray-400 cursor-pointer'
-                        onClick={seePassHandle}    
-                    />
+            {
+              !seePass ?
+                <IoEyeOffOutline 
+                    className='absolute right-3 top-[51px] text-xl text-gray-400 cursor-pointer'
+                    onClick={seePassHandle}    
+                />
                 :
                 <IoEyeOutline 
                     className='absolute right-3 top-[51px] text-xl text-gray-400 cursor-pointer'
@@ -65,7 +65,7 @@ const LoginForm = () => {
 
           <button className='btn_main bg-pizza_orange-500 text-white w-full max-w-xs hover:bg-pizza_orange-400 mb-8' >Login</button>
 
-          <Link href={'/register'} className='text-right w-full max-w-xs underline text-pizza_red-400 hover:text-pizza_red-200'>Create Account</Link>
+          <Link href={'/registration'} className='text-right w-full max-w-xs underline text-pizza_red-400 hover:text-pizza_red-200'>Create Account</Link>
 
           <div className='border-b border-gray-300 w-full max-w-xs mt-4' ></div>
 
