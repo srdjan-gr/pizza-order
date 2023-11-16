@@ -1,10 +1,15 @@
-import { Roboto } from "next/font/google";
+import { Roboto, IBM_Plex_Serif } from "next/font/google";
 import "./globals.css";
 
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["100", "400", "500", "700", "900"],
 });
+
+// const IBM_PLex_Serif = IBM_PLex_Serif({
+//   subsets: ["latin"],
+//   weight: ["100", "200", "400", "500", "700"],
+// });
 
 export const metadata = {
   title: "Perfect Pizza",

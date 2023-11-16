@@ -17,6 +17,9 @@ module.exports = {
       'xl': '1440px',
     },
     extend: {
+      fontFamily: {
+        'ibm': ['IBM_PLex_Serif', 'serif'],
+      },
       colors :{
         // 'pizza_black': '#130912',
         'pizza_black': '#242424',

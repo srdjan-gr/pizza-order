@@ -2,14 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .link_hover {
-    @apply hover:text-gray-700 transition ease-in 
-} */
 
 .link_hover {
-    @apply hover:text-gray-500
+    @apply hover:text-gray-500   
 }
 
 .btn_main {
     @apply px-8 py-2 rounded-full
 }
+
+
+.custom_shadow-top{
+    /* box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset; */
+    -webkit-box-shadow: 0.5px -4px 5px -0.5px rgba(222, 222, 222, 0.2);
+    -moz-box-shadow: 0.5px -4px 5px -0.5px rgba(222, 222, 222, 0.2);
+     box-shadow: 0.5px -4px 5px -0.5px rgba(222, 222, 222, 0.2);
+}
+
+
+/* ------------------------------------------------------ */
+/* Spinner */
+.spinner {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    animation: spinner-plncf9 4s infinite;
+ }
+ 
+ .spinner::before,
+ .spinner::after {
+    content: "";
+    grid-area: 1/1;
+    border: 9px solid;
+    border-radius: 50%;
+    border-color: #e77917 #e77917 #0000 #0000;
+    mix-blend-mode: darken;
+    animation: spinner-plncf9 1s infinite linear;
+ }
+ 
+ .spinner::after {
+    border-color: #0000 #0000 #f7ceab #f7ceab;
+    animation-direction: reverse;
+ }
+ 
+ @keyframes spinner-plncf9 {
+    100% {
+       transform: rotate(1turn);
+    }
+ }
+ /* ------------------------------------------------------ */

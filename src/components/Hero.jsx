@@ -15,7 +15,7 @@ const Hero = () => {
         <div className='w-full absolute bottom-1/2 left-0 translate-y-1/2'>
             <div className="max-w-7xl m-auto ">
 
-                <h1 className='text-7xl font-bold leading-[1.2] text-pizza_dark'>Perfect Place <br /> for <span className='text-transparent bg-clip-text bg-gradient-to-r from-pizza_green-500 to-pizza_orange-400'>Perfect Pizza</span></h1>
+                <h1 className='text-7xl font-bold leading-[1.2] text-pizza_dark'>Perfect Place <br /> for <span className='font-ibm text-transparent bg-clip-text bg-gradient-to-r from-pizza_green-500 to-pizza_orange-400'>Perfect Pizza</span></h1>
 
                 <p className='w-1/3 mt-5 text-lg'>Our online platform offers a premium selection, delivery and taste to place Perfect Pizza directly to your table. Try it now.</p>
 

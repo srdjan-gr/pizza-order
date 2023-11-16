@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import LoginForm from '@/components/LoginForm'
 
@@ -11,6 +12,10 @@ const page = () => {
       <main className='m-auto bg-pizza_light'>
         <LoginForm />
       </main>
+
+      <footer>
+        <Footer />
+      </footer>
     </>
   )
 }

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-
+import { CiTwitter } from "react-icons/ci";
 import googleIcon from '../../public/images/google.png'
 
 const LoginForm = () => {
