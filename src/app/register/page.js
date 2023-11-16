@@ -9,7 +9,7 @@ const page = () => {
         <Header />
       </nav>
 
-      <main className='m-auto bg-pizza_light'>
+      <main className='m-auto '>
         <RegisterForm />
       </main>
 

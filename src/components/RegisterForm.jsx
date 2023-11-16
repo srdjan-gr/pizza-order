@@ -6,7 +6,7 @@ import googleIcon from '../../public/images/google.png'
 
 const LoginForm = () => {
   return (
-    <section className='pt-32 w-full h-screen m-auto'>
+    <section className='pt-32 w-full h-screen  m-auto'>
 
         <form action="" className='w-full m-auto flex flex-col justify-center items-center' >
 

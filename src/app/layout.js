@@ -20,7 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
-      <body className={` text-pizza_black text-sm bg-white`} >
+      <body className={` text-pizza_black text-sm bg-pizza_light`} >
         {children}
       </body>
     </html>
