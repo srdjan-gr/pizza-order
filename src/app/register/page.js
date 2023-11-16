@@ -13,7 +13,7 @@ const page = () => {
         <RegisterForm />
       </main>
 
-      <footer className='w-full m-auto '>
+      <footer>
         <Footer />
       </footer>
     </>
