@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import heroDesktop from '../../public/images/hero-desktop.jpg'
-import { ArrowRight } from '../../constants/icons'
+import { IoIosArrowRoundForward } from "react-icons/io";
 
 const Hero = () => {
   return (
@@ -19,9 +19,9 @@ const Hero = () => {
 
                 <p className='w-1/3 mt-5 text-lg'>Our online platform offers a premium selection, delivery and taste to place Perfect Pizza directly to your table. Try it now.</p>
 
-                <div className="mt-10 btn_main bg-pizza_green-500 hover:bg-pizza_green-400 text-white cursor-pointer gap-2 w-[180px]">
+                <div className="mt-10 btn_main bg-pizza_green-500 hover:bg-pizza_green-400 text-white cursor-pointer w-[190px]">
                     <Link href={'/'}>Order Now </Link>
-                    <ArrowRight className='w-6 h-6 ' />
+                    <IoIosArrowRoundForward className='w-8 h-8 ' />
                 </div>
             </div>
         </div>

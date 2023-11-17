@@ -15,11 +15,21 @@
     @apply bg-gray-500
 }
 
+.mobile_active {
+    transform: translateX(100%)
+}
+
 
 .custom_shadow-top{
     -webkit-box-shadow: 0.5px -4px 5px -0.5px rgba(222, 222, 222, 0.2);
     -moz-box-shadow: 0.5px -4px 5px -0.5px rgba(222, 222, 222, 0.2);
      box-shadow: 0.5px -4px 5px -0.5px rgba(222, 222, 222, 0.2);
+}
+
+.custom_shadow-left{
+    -webkit-box-shadow: -4px 0 5.5px -0.5px rgba(222, 222, 222, 0.2);
+    -moz-box-shadow: -4px 0 5.5px -0.5px rgba(222, 222, 222, 0.2);
+    box-shadow: -4px 0 5.5px -0.5px rgba(222, 222, 222, 0.2);
 }
 
 
