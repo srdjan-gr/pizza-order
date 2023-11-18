@@ -12,9 +12,7 @@ const page = () => {
         <Hero />
       </main>
 
-      <footer>
-        <Footer />
-      </footer>
+      {/* Footer imported from man Layout */}
     </>
   )
 }

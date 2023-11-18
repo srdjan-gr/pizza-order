@@ -1,12 +1,16 @@
 import Image from "next/image"
 import Link from "next/link"
 import logo from '../../public/images/logo.png'
+import { signOut, useSession } from 'next-auth/react'
 
 
 import { AiOutlineClose } from "react-icons/ai";
 
 
 const MobileMenu = ({ mobile, setMobile }) => {
+
+    const session = useSession()
+    const sessionStatus = session.status
 
     const handleMobileMenu = () => {
         setMobile(!mobile)
@@ -42,7 +46,19 @@ const MobileMenu = ({ mobile, setMobile }) => {
                 <Link className='link_hover text-xl' href={'/about'} >About</Link>
 
                 <Link className='btn_main bg-pizza_green-500 hover:bg-pizza_green-400 text-white mt-10 text-xl w-2/4' href={'/order'} onClick={handleMobileMenu}>Order</Link>
-                <Link className='btn_main bg-pizza_orange-500 hover:bg-pizza_orange-400 text-white text-xl w-2/4 ' href={'/login'} onClick={handleMobileMenu} >Login</Link>
+                
+                
+                {sessionStatus === 'authenticated' && (
+                    <button 
+                        className='btn_main bg-pizza_wood-500 hover:bg-pizza_wood-400 text-white text-xl w-2/4'
+                        onClick={() => signOut()} 
+                    >Logout
+                    </button>
+                )}
+
+                {sessionStatus === 'unauthenticated' && (
+                    <Link className='btn_main bg-pizza_orange-500 hover:bg-pizza_orange-400 text-white text-xl w-2/4' href={'/login'} onClick={handleMobileMenu}>Login</Link>
+                )}
             </div>
         
         </section>

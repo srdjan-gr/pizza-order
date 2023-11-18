@@ -17,6 +17,7 @@ import Spinner from './Spinner';
 const LoginForm = () => {
 
   const session = useSession()
+  const sessionStatus = session.status
 
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
@@ -44,7 +45,6 @@ const LoginForm = () => {
 
     setLogedinUser(false)
     toast.success('You are Loged In!')
-
   }
 
 
@@ -106,8 +106,7 @@ const LoginForm = () => {
               disabled = {logdinUser}  
           >
               Login
-              {logdinUser &&  <Spinner />}
-              
+              {logdinUser &&  <Spinner />} 
           </button>
 
           <Link href={'/registration'} className='text-right w-full max-w-xs underline text-pizza_red-400 hover:text-pizza_red-200'>Create Account</Link>
@@ -116,18 +115,21 @@ const LoginForm = () => {
 
         </form>
 
-          <div className="form-control w-full max-w-xs mb-4 mt-4 m-auto">
-            <label className="label">
-              <span className="label-text text-gray-400">Or, login with Google account</span>
-            </label>
-            <button 
-              className='flex justify-center items-center gap-2 btn_main border border-gray-300 text-gray-500 w-full max-w-xs hover:bg-gray-100 ' 
-              onClick={() => signIn('google', {callbackUrl: '/'})}
-            >
-              <Image src={googleIcon} alt='google-icon' width={20} height={20}  />
-              Login with Google
-            </button>
-          </div>
+
+        <div className="form-control w-full max-w-xs mb-4 mt-4 m-auto">
+          <label className="label">
+            <span className="label-text text-gray-400">Or, login with Google account</span>
+          </label>
+          
+          <button 
+            className='flex justify-center items-center gap-2 btn_main border border-gray-300 text-gray-500 w-full max-w-xs hover:bg-gray-100 ' 
+            onClick={() => signIn('google', {callbackUrl: '/'})}
+          >
+            <Image src={googleIcon} alt='google-icon' width={20} height={20}  />
+            Login with Google
+            {sessionStatus === 'loading' &&  <Spinner />}
+          </button>
+        </div>
 
 
         <Toaster />
