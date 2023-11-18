@@ -20,6 +20,8 @@ const Header = () => {
     const session = useSession()
     const sessionStatus = session.status
 
+    // console.log(session)
+
 
     const handleMobileMenu = () => {
         setMobile(!mobile)
@@ -57,7 +59,7 @@ const Header = () => {
                                 </button>
                             )}
 
-                            {sessionStatus !== 'authenticated' && (
+                            {sessionStatus === 'unauthenticated' && (
                                 <Link className='btn_main bg-pizza_orange-500 hover:bg-pizza_orange-400 text-white' href={'/login'} >Login</Link>
                             )}
 
@@ -72,8 +74,6 @@ const Header = () => {
                             <HiOutlineShoppingCart className='w-6 h-6 cursor-pointer link_hover '/>
                         </div>
                     </div>
-
-                    
                 </div>
 
             </div>

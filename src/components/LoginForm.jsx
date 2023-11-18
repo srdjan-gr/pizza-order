@@ -1,6 +1,7 @@
 'use client'
 
 import { signIn } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -14,6 +15,8 @@ import Spinner from './Spinner';
 
 
 const LoginForm = () => {
+
+  const session = useSession()
 
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
@@ -37,19 +40,11 @@ const LoginForm = () => {
     }
 
     // Next Auth
-    await signIn('credentials', {email, password})
-
-
-    // if(!response.ok){
-    //   toast.error(response.statusText)
-    //   setLogedinUser(false)
-    //   return
-    // }
+    await signIn('credentials', {email, password, callbackUrl: '/'})
 
     setLogedinUser(false)
     toast.success('You are Loged In!')
-    // setEmail('')
-    // setPassword('')
+
   }
 
 
@@ -119,18 +114,20 @@ const LoginForm = () => {
 
           <div className='border-b border-gray-300 w-full max-w-xs mt-4' ></div>
 
+        </form>
 
-          <div className="form-control w-full max-w-xs mb-4 mt-4">
+          <div className="form-control w-full max-w-xs mb-4 mt-4 m-auto">
             <label className="label">
               <span className="label-text text-gray-400">Or, login with Google account</span>
             </label>
-            <button className='flex justify-center items-center gap-2 btn_main border border-gray-300 text-gray-500 w-full max-w-xs hover:bg-gray-100 ' >
+            <button 
+              className='flex justify-center items-center gap-2 btn_main border border-gray-300 text-gray-500 w-full max-w-xs hover:bg-gray-100 ' 
+              onClick={() => signIn('google', {callbackUrl: '/'})}
+            >
               <Image src={googleIcon} alt='google-icon' width={20} height={20}  />
               Login with Google
             </button>
           </div>
-
-        </form>
 
 
         <Toaster />
