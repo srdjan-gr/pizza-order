@@ -5,17 +5,13 @@ import RegisterForm from '@/components/RegisterForm'
 const page = () => {
   return (
     <>
-      <nav className='w-full m-auto'>
-        <Header />
-      </nav>
+      {/* Header imported from man Layout */}
 
       <main className='m-auto '>
         <RegisterForm />
       </main>
 
-      <footer>
-        <Footer />
-      </footer>
+      {/* Footer imported from man Layout */}
     </>
   )
 }

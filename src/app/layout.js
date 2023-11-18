@@ -1,5 +1,8 @@
 import { Roboto, IBM_Plex_Serif } from "next/font/google";
 import "./globals.css";
+import { AppProvider } from "@/components/AppContext";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -21,7 +24,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
       <body className={` text-pizza_black text-sm bg-pizza_light`} >
-        {children}
+
+        <AppProvider>
+          <nav className='w-full m-auto'>
+            <Header />
+          </nav>
+
+          {children}
+
+          <footer>
+            <Footer />
+          </footer>
+        </AppProvider>
+
       </body>
     </html>
   );

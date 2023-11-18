@@ -6,10 +6,7 @@ import MobileMenu from '@/components/MobileMenu'
 const page = () => {
   return (
     <>
-      <nav className='w-full m-auto'>
-        <Header />
-        {/* <MobileMenu /> */}
-      </nav>
+      {/* Header imported from man Layout */}
 
       <main className='m-auto'>
         <Hero />

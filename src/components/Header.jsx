@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { signOut, useSession } from 'next-auth/react'
 
 import logo from '../../public/images/logo.png'
 
@@ -15,6 +16,10 @@ import MobileMenu from './MobileMenu'
 const Header = () => {
 
     const [mobile, setMobile] = useState(false)
+
+    const session = useSession()
+    const sessionStatus = session.status
+
 
     const handleMobileMenu = () => {
         setMobile(!mobile)
@@ -42,7 +47,20 @@ const Header = () => {
                             <Link className='link_hover' href={'/contact'} >Contact</Link>
                             <Link className='link_hover' href={'/about'} >About</Link>
                             <Link className='btn_main bg-pizza_green-500 hover:bg-pizza_green-400 text-white' href={'/order'} >Order</Link>
-                            <Link className='btn_main bg-pizza_orange-500 hover:bg-pizza_orange-400 text-white' href={'/login'} >Login</Link>
+
+
+                            {sessionStatus === 'authenticated' && (
+                                <button 
+                                    className='btn_main bg-pizza_wood-500 hover:bg-pizza_wood-400 text-white'
+                                    onClick={() => signOut()} 
+                                >Logout
+                                </button>
+                            )}
+
+                            {sessionStatus !== 'authenticated' && (
+                                <Link className='btn_main bg-pizza_orange-500 hover:bg-pizza_orange-400 text-white' href={'/login'} >Login</Link>
+                            )}
+
                         </div>
                         
                         <div className="flex justify-center items-center gap-4 text-gray-800" >
@@ -54,6 +72,8 @@ const Header = () => {
                             <HiOutlineShoppingCart className='w-6 h-6 cursor-pointer link_hover '/>
                         </div>
                     </div>
+
+                    
                 </div>
 
             </div>

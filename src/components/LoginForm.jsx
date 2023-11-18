@@ -1,31 +1,79 @@
 'use client'
 
+import { signIn } from 'next-auth/react'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast';
+
 
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import googleIcon from '../../public/images/google.png'
-import { useState } from 'react'
+import Spinner from './Spinner';
 
 
 const LoginForm = () => {
 
+  const [ email, setEmail ] = useState('')
+  const [ password, setPassword ] = useState('')
   const [ seePass, setSeePass ] = useState(false)
+  const [ logdinUser, setLogedinUser ] = useState(false)
 
   const seePassHandle = () => {
     setSeePass(!seePass)
   }
 
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault()
+
+    setLogedinUser(true)
+
+    if(!email && !password){
+      toast.error('All fields are required!')
+      setLogedinUser(false)
+      return
+    }
+
+    // Next Auth
+    await signIn('credentials', {email, password})
+
+
+    // if(!response.ok){
+    //   toast.error(response.statusText)
+    //   setLogedinUser(false)
+    //   return
+    // }
+
+    setLogedinUser(false)
+    toast.success('You are Loged In!')
+    // setEmail('')
+    // setPassword('')
+  }
+
+
   return (
     <section className='pt-32 w-full h-screen m-auto'>
 
-        <form action="" className='w-full m-auto flex flex-col justify-center items-center' >
+        <form 
+          className='w-full m-auto flex flex-col justify-center items-center' 
+          onSubmit={handleFormSubmit}  
+        >
 
           <div className="form-control w-full max-w-xs mb-4">
             <label className="label">
               <span className="label-text text-gray-400">Enter your email</span>
             </label>
-            <input type="text" placeholder="Your email" className="input input-bordered w-full max-w-xs input-md rounded-xl" />
+
+            <input 
+              type="text" 
+              placeholder="Your email" 
+              className="input input-bordered w-full max-w-xs input-md rounded-xl" 
+              disabled = {logdinUser} 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
 
 
@@ -34,20 +82,15 @@ const LoginForm = () => {
               <span className="label-text text-gray-400">Enter your password</span>
             </label>
 
-            {
-              !seePass ?
-                <input 
-                  type="password" 
-                  placeholder="Your password" 
-                  className="input input-bordered w-full max-w-xs input-md rounded-xl" 
-                />
-                :
-                <input 
-                  type="text" 
-                  placeholder="Your password" 
-                  className="input input-bordered w-full max-w-xs input-md rounded-xl"  
-                />
-            }
+            <input 
+              type={!seePass ? 'password' : 'text'}  
+              placeholder="Your password" 
+              className="input input-bordered w-full max-w-xs input-md rounded-xl"
+              disabled = {logdinUser} 
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)}
+            />
+      
             {
               !seePass ?
                 <IoEyeOffOutline 
@@ -63,11 +106,19 @@ const LoginForm = () => {
           </div>
 
 
-          <button className='btn_main bg-pizza_orange-500 text-white w-full max-w-xs hover:bg-pizza_orange-400 mb-8' >Login</button>
+          <button  
+              className={`${logdinUser ? 'bg-gray-300' : 'bg-pizza_orange-500 hover:bg-pizza_orange-400' } btn_main text-white w-full max-w-xs mb-8 relative`}
+              disabled = {logdinUser}  
+          >
+              Login
+              {logdinUser &&  <Spinner />}
+              
+          </button>
 
           <Link href={'/registration'} className='text-right w-full max-w-xs underline text-pizza_red-400 hover:text-pizza_red-200'>Create Account</Link>
 
           <div className='border-b border-gray-300 w-full max-w-xs mt-4' ></div>
+
 
           <div className="form-control w-full max-w-xs mb-4 mt-4">
             <label className="label">
@@ -81,6 +132,8 @@ const LoginForm = () => {
 
         </form>
 
+
+        <Toaster />
     </section>
   )
 }

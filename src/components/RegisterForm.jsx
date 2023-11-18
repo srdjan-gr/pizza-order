@@ -14,7 +14,6 @@ const LoginForm = () => {
   const [ password, setPassword ] = useState('')
   const [ seePass, setSeePass ] = useState(false)
   const [ createUser, setCreateUser ] = useState(false)
-  const [ error, setError ] = useState(false)
 
 
   const seePassHandle = () => {
@@ -41,7 +40,7 @@ const LoginForm = () => {
     //     })
     // } catch (error) {
     //     toast.error(error)
-    //     setError(true)
+    //     setError(true) 
     // }
 
     const response = await fetch('/api/register', {
@@ -75,10 +74,12 @@ const LoginForm = () => {
             <label className="label">
               <span className="label-text text-gray-400">Enter your email</span>
             </label>
+
             <input 
                 type="text" 
                 placeholder="Your email" 
                 className="input input-bordered w-full max-w-xs input-md rounded-xl" 
+                disabled={createUser}
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)}
             />
@@ -90,9 +91,10 @@ const LoginForm = () => {
             </label>
 
             <input  
-                type={!seePass ? 'password' : 'text'}  
+                type={!seePass ? 'password' : 'text'} 
                 placeholder="Your password" 
                 className="input input-bordered w-full max-w-xs input-md rounded-xl"
+                disabled={createUser} 
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)} 
             /> 
