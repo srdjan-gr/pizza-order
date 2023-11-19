@@ -8,7 +8,7 @@ const Footer = () => {
   const path = usePathname()
 
   return (
-    <section className={`${path === '/login' || path === '/register' ? 'absolute bottom-0 left-0 z-40' : '' } bg-white w-full text-gray-800 flex justify-center items-center flex-col p-4 custom_shadow-top`}>
+    <section className={`${path === '/login' || path === '/register' || path === '/userProfile' ? 'absolute bottom-0 left-0 z-40' : '' } bg-white w-full text-gray-800 flex justify-center items-center flex-col p-4 custom_shadow-top`}>
 
         <h1 className="text-xl font-ibm">perfect <span className="text-orange-500">pizza</span></h1>
 

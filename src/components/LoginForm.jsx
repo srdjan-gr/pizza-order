@@ -122,7 +122,7 @@ const LoginForm = () => {
           </label>
           
           <button 
-            className='flex justify-center items-center gap-2 btn_main border border-gray-300 text-gray-500 w-full max-w-xs hover:bg-gray-100 ' 
+            className='flex justify-center items-center gap-2 btn_main border border-gray-300 text-gray-500 w-full max-w-xs hover:bg-gray-200/50 ' 
             onClick={() => signIn('google', {callbackUrl: '/'})}
           >
             <Image src={googleIcon} alt='google-icon' width={20} height={20}  />

@@ -9,22 +9,33 @@ import logo from '../../public/images/logo.png'
 
 import { RiMenuFoldLine } from "react-icons/ri";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
+import { IoIosArrowDown } from "react-icons/io";
 import MobileMenu from './MobileMenu'
+import UserMenu from './UserMenu'
 
 
 
 const Header = () => {
 
     const [mobile, setMobile] = useState(false)
+    const [ userMenu, setUserMenu ] = useState(false)
 
     const session = useSession()
     const sessionStatus = session.status
 
-    // console.log(session)
+    const userData = session.data?.user
+    let userName = userData?.name || userData?.email
+    if(userName && userName.includes(' ')){
+        userName = userName.split(' ')[0]
+    }
 
 
     const handleMobileMenu = () => {
         setMobile(!mobile)
+    }
+
+    const openUserMenu = () => {
+        setUserMenu(!userMenu)
     }
 
 
@@ -52,11 +63,18 @@ const Header = () => {
 
 
                             {sessionStatus === 'authenticated' && (
-                                <button 
-                                    className='btn_main bg-pizza_wood-500 hover:bg-pizza_wood-400 text-white'
-                                    onClick={() => signOut()} 
-                                >Logout
-                                </button>
+                                <div 
+                                    type='button'
+                                    className='btn_main bg-pizza_wood-500 hover:bg-pizza_wood-400 text-white flex items-center justify-center'
+                                > 
+                                    {/* <Image src={userImage} alt='user-image' /> */}
+                                    {/* <p className='text-sm'>Hi, {userName[0]}</p> */}
+                                    <p className='text-sm'>Hi, {userName}</p>
+                                    <IoIosArrowDown 
+                                        className='w-5 h-5 cursor-pointer '
+                                        onClick={openUserMenu}
+                                    />
+                                </div>
                             )}
 
                             {sessionStatus === 'unauthenticated' && (
@@ -78,6 +96,7 @@ const Header = () => {
 
             </div>
 
+            <UserMenu userMenu={userMenu} setUserMenu={setUserMenu} />
             <MobileMenu mobile={mobile} setMobile={setMobile} />
         </>
     )
