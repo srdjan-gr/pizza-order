@@ -127,7 +127,7 @@ const LoginForm = () => {
           >
             <Image src={googleIcon} alt='google-icon' width={20} height={20}  />
             Login with Google
-            {sessionStatus === 'loading' &&  <Spinner />}
+            {/* {sessionStatus === 'loading' &&  <Spinner />} */}
           </button>
         </div>
 

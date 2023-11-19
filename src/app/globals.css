@@ -8,7 +8,7 @@
 }
 
 .btn_main {
-    @apply px-6 py-2 rounded-full flex justify-center items-center gap-2
+    @apply px-5 py-2 rounded-full flex justify-center items-center gap-2
 }
 
 .btn_disabled{

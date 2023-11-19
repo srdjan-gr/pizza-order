@@ -24,6 +24,8 @@ const Header = () => {
     const sessionStatus = session.status
 
     const userData = session.data?.user
+    const userImage = userData?.image 
+
     let userName = userData?.name || userData?.email
     if(userName && userName.includes(' ')){
         userName = userName.split(' ')[0]
@@ -67,11 +69,11 @@ const Header = () => {
                                     type='button'
                                     className='btn_main bg-pizza_wood-500 hover:bg-pizza_wood-400 text-white flex items-center justify-center'
                                 > 
-                                    {/* <Image src={userImage} alt='user-image' /> */}
-                                    {/* <p className='text-sm'>Hi, {userName[0]}</p> */}
+                                    {/* <p className='text-sm'>Hi, {userName[0]}</p> - Moze i ovako index da se upise */}
                                     <p className='text-sm'>Hi, {userName}</p>
+                                    <Image src={userImage} alt='user-image' width={20} height={20} className='rounded-full'/>
                                     <IoIosArrowDown 
-                                        className='w-5 h-5 cursor-pointer '
+                                        className='w-4 h-4 cursor-pointer '
                                         onClick={openUserMenu}
                                     />
                                 </div>
