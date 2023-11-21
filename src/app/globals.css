@@ -31,6 +31,10 @@
     box-shadow: -4px 0 5.5px -0.5px rgba(222, 222, 222, 0.2);
 }
 
+input[type='text']:disabled {
+   @apply border-gray-200
+}
+
 
 /* ------------------------------------------------------ */
 /* Spinner */

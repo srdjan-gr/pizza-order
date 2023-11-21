@@ -1,7 +1,7 @@
 'use client'
 
-import Spinner from "@/components/Spinner"
 import Loading from "@/components/Loading"
+import ProfileForm from "@/components/ProfileForm"
 import { useSession } from "next-auth/react"
 import { redirect } from "next/navigation"
 
@@ -25,7 +25,7 @@ const page = () => {
           {/* Header imported from man Layout */}
     
           <main className='m-auto '>
-
+            <ProfileForm />
           </main>
     
           {/* Footer imported from man Layout */}

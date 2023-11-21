@@ -41,10 +41,16 @@ const LoginForm = () => {
     }
 
     // Next Auth
-    await signIn('credentials', {email, password, callbackUrl: '/'})
+    // const response = await signIn('credentials', {email, password, callbackUrl: '/'})
+    const response = await signIn('credentials', {email, password})
 
-    setLogedinUser(false)
-    toast.success('You are Loged In!')
+    if(response){
+      setLogedinUser(false)
+      toast.success('You are Loged In!')
+    }else{
+      setLogedinUser(false)
+      toast.error('You are NOT Loged In!')
+    }
   }
 
 

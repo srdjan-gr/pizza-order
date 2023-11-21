@@ -26,10 +26,15 @@ const Header = () => {
     const userData = session.data?.user
     const userImage = userData?.image 
 
+
     let userName = userData?.name || userData?.email
     if(userName && userName.includes(' ')){
         userName = userName.split(' ')[0]
+    }else{
+        userName = userData?.email
     }
+
+    // console.log(session)
 
 
     const handleMobileMenu = () => {
