@@ -6,6 +6,14 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: '*.googleusercontent.com',
             },
+            {
+                protocol: 'https',
+                hostname: 'perfect-pizza.s3.amazonaws.com',
+            },
+            {
+                protocol: 'http',
+                hostname: 'localhost:3000',
+            },
         ],
     },
 }

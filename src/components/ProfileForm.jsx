@@ -19,15 +19,18 @@ const ProfileForm = () => {
   const sessionStatus = session.status
 
   const userData = session.data?.user
-  const userImage = userData?.image 
+//   const userImage = userData?.image 
 
   const [ name, setName ] = useState('')
+  const [ userImage, setUserImage ] = useState('')
   const [ savingChanges, setSavingChanges ] = useState(false)
+  const [ uploadingImage, setUploadingImage ] = useState(false)
 
 
   useEffect(() => {
     if(sessionStatus === 'authenticated'){
         setName(userData?.name)
+        setUserImage(userData?.image )
     }
   }, [sessionStatus, session])
   
@@ -36,19 +39,39 @@ const ProfileForm = () => {
     e.preventDefault()
 
     setSavingChanges(true)
-
+  
     const response = await fetch('/api/userProfile', {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({name:name})
+        body: JSON.stringify({name:name, image: userImage})
     })
 
 
-
-    setSavingChanges(false)
     if(response){
         toast.success('User info updated!')
-        setName('')
+    }
+    setSavingChanges(false)
+  }
+
+
+  const handleImageChange = async (e) => {
+
+    setUploadingImage(true)
+
+    const file = e.target.files
+
+    if(file.length === 1) {
+        const data = new FormData
+        data.set('file', file[0])
+
+        const response = await fetch('./api/upload', {
+            method: 'POST',
+            body: data, 
+        })
+
+        const imageAwsLink = await response.json()
+        setUserImage(imageAwsLink)
+        setUploadingImage(false)
     }
   }
 
@@ -61,17 +84,27 @@ const ProfileForm = () => {
           onSubmit={handleProfileInfoUpdate}  
         >
             <div className='w-full max-w-xs mb-3 flex items-center justify-center gap-4'>
-                <Image className='rounded-full mt-3' src={userImage} width={100} height={100} alt='avatar'/>
+
+                {userImage && (
+                    <Image className='rounded-full mt-3 object-contain' src={userImage} width={100} height={100} alt='avatar' />
+                    // <img src={userImage} alt="avatar" className='w-10 h-10' />
+                )}
 
                 <div className="form-control w-full max-w-xs">
-                    <label className="label">
+                    <label className="label mb-1">
                         <span className="label-text text-gray-400">Change account image</span>
                     </label>
-                    <input 
-                        type="file" 
-                        className="file-input file-input-sm file-input-ghost file-input-bordered w-full max-w-xs text-gray-400  focus:text-gray-400 rounded-xl" 
-                        placeholder=''
-                    /> 
+
+                    <label className='rounded-xl w-full max-w-xs'>
+                        <input type="file" name="" id="" 
+                            className='hidden' 
+                            onChange={handleImageChange}
+                        />
+                        <span 
+                            className=' text-gray-400 rounded-xl w-full max-w-xs text-center p-3 border-[1px] border-gray-300 cursor-pointer bg-white flex items-center justify-center gap-3'>Browse image
+                            {uploadingImage &&  <Spinner />} 
+                        </span>
+                    </label>
                 </div>
             </div>
 

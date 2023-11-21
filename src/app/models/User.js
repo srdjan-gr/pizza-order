@@ -1,8 +1,10 @@
 const { Schema, models, model } = require("mongoose");
-import bcrypt from "bcrypt";
 
+// Mongo User Model
 const UserSchema = new Schema({
-    name: {type: String},
+    name: {
+        type: String
+    },
     email: {
         type: String, 
         requireed: true, 
@@ -10,8 +12,11 @@ const UserSchema = new Schema({
     },
     password: {
         type: String, 
-        reguired:true,
-    }
+        reguired: true,
+    }, 
+    image: {
+        type: String
+    },
 }, {timestamps: true})
 
 

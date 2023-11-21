@@ -1,6 +1,7 @@
 import User  from "../../models/User"
 import mongoose from "mongoose"
 
+// Create user function
 export async function POST (request){
 
     const body = await request.json()

@@ -4,6 +4,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { User } from "@/app/models/User";
 
 
+// Update user profile function
 export async function PUT(req){
 
     mongoose.connect(process.env.MONGO_URL);
@@ -14,12 +15,24 @@ export async function PUT(req){
 
     // const user = User.findOne({email)
 
-    console.log({session, data})
+    // console.log({session, data})
 
-    if('name' in data ){
+    const update = {}
+
+    if('name' in data){
+        update.name = data.name
+    }
+
+    
+    if('image' in data){
+        update.image = data.image
+    }
+    
+    if(Object.keys(update).length > 0 ){
         // update user name
         // UpdateOne - trazimo korisnika u bazi po email koji dolazi iz sessije i updejtujemo podatke
-        await User.updateOne({email}, {name: data.name})
+        // await User.updateOne({email}, {name: data.name})
+        await User.updateOne({email}, update)
     }
 
     return Response.json(true)
