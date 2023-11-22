@@ -8,9 +8,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import toast, { Toaster } from 'react-hot-toast';
 
-
-import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import Spinner from './Spinner';
+
 
 
 const ProfileForm = () => {
@@ -35,21 +34,33 @@ const ProfileForm = () => {
   }, [sessionStatus, session])
   
 
+//   Saving updated user info
   const handleProfileInfoUpdate = async (e) => {
     e.preventDefault()
 
     setSavingChanges(true)
+
+    const savingPromise = new Promise (async (resolve, reject) => {
+
+        const response = await fetch('/api/userProfile', {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({name:name, image: userImage})
+        })
+
+        if(response.ok){
+            resolve()
+        }else{
+            reject()
+        }
+    })
   
-    const response = await fetch('/api/userProfile', {
-        method: 'PUT',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({name:name, image: userImage})
+    await toast.promise(savingPromise, {
+        loading: 'Saving...',
+        success: 'User info updated!',
+        error: 'Error occurred!',
     })
 
-
-    if(response){
-        toast.success('User info updated!')
-    }
     setSavingChanges(false)
   }
 
@@ -83,14 +94,24 @@ const ProfileForm = () => {
           className='w-full m-auto flex flex-col justify-start items-center' 
           onSubmit={handleProfileInfoUpdate}  
         >
-            <div className='w-full max-w-xs mb-3 flex items-center justify-center gap-4'>
+            <div className='w-full max-w-xs mb-3 flex items-center justify-start'>
 
-                {userImage && (
-                    <Image className='rounded-full mt-3 object-contain' src={userImage} width={100} height={100} alt='avatar' />
-                    // <img src={userImage} alt="avatar" className='w-10 h-10' />
-                )}
+                <div className='w-1/3 mt-3'>
+                    <div 
+                        style={{width: '80px', height: '80px', background: 'rgba(0, 0, 0, 0.05)', position: 'relative', borderRadius: '100%'}} 
+                    >
+                        {userImage && (
+                            <Image 
+                                className='rounded-full' 
+                                src={userImage}  alt='avatar'  
+                                layout="fill"
+                                objectFit='contain'
+                            />
+                        )}
+                    </div>
+                </div>
 
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control w-2/3">
                     <label className="label mb-1">
                         <span className="label-text text-gray-400">Change account image</span>
                     </label>
@@ -164,7 +185,7 @@ const ProfileForm = () => {
 
         </form>
 
-        <Toaster />
+
     </section>
   )
 }

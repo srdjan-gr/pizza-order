@@ -43,20 +43,28 @@ const LoginForm = () => {
     //     setError(true) 
     // }
 
-    const response = await fetch('/api/register', {
-        method: 'POST',
-        body: JSON.stringify({email, password}),
-        headers: {'Content-Type': 'application/json'}
+    const registerPromise = new Promise( async (resolve, reject) => {
+
+      const response = await fetch('/api/register', {
+          method: 'POST',
+          body: JSON.stringify({email, password}),
+          headers: {'Content-Type': 'application/json'}
+      })
+
+      if(response.ok){
+        resolve()
+      }else{
+        reject()
+      }
     })
 
-    if(!response.ok){
-        toast.error(response.statusText)
-        setCreateUser(false)
-        return
-    }
+    await toast.promise(registerPromise, {
+      loading: 'Loading...',
+      success: 'User created!',
+      error: 'Error occurred!',
+    })
 
     setCreateUser(false)
-    toast.success('User created!')
     setEmail('')
     setPassword('')
   }
@@ -126,8 +134,6 @@ const LoginForm = () => {
 
         </form>
 
-
-        <Toaster />
     </section>
   )
 }

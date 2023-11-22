@@ -6,11 +6,11 @@ import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
-import googleIcon from '../../public/images/google.png'
+import { FcGoogle } from "react-icons/fc";
 import Spinner from './Spinner';
 
 
@@ -40,17 +40,28 @@ const LoginForm = () => {
       return
     }
 
-    // Next Auth
-    // const response = await signIn('credentials', {email, password, callbackUrl: '/'})
-    const response = await signIn('credentials', {email, password})
 
-    if(response){
-      setLogedinUser(false)
-      toast.success('You are Loged In!')
-    }else{
-      setLogedinUser(false)
-      toast.error('You are NOT Loged In!')
-    }
+    const loginPromise = new Promise(async (resolve, reject) => {
+
+      // Next Auth
+      const response = await signIn('credentials', {email, password, callbackUrl: '/'})
+      // const response = await signIn('credentials', {email, password})
+
+      if(response.ok){
+        resolve()
+      }else{
+        reject()
+      }
+    })
+
+    await toast.promise(loginPromise, {
+      loading: 'Loading...',
+      success: 'You are Loged In!',
+      error: 'Error occurred!',
+    })
+
+
+    setLogedinUser(false)
   }
 
 
@@ -131,14 +142,12 @@ const LoginForm = () => {
             className='flex justify-center items-center gap-2 btn_main border border-gray-300 text-gray-500 w-full max-w-xs hover:bg-gray-200/50 ' 
             onClick={() => signIn('google', {callbackUrl: '/'})}
           >
-            <Image src={googleIcon} alt='google-icon' width={20} height={20}  />
+            <FcGoogle className='h-5 w-5' />
             Login with Google
             {/* {sessionStatus === 'loading' &&  <Spinner />} */}
           </button>
         </div>
 
-
-        <Toaster />
     </section>
   )
 }
