@@ -47,11 +47,8 @@ const LoginForm = () => {
       const response = await signIn('credentials', {email, password, callbackUrl: '/'})
       // const response = await signIn('credentials', {email, password})
 
-      if(response.ok){
-        resolve()
-      }else{
-        reject()
-      }
+      response.ok ? resolve() : reject()
+       
     })
 
     await toast.promise(loginPromise, {

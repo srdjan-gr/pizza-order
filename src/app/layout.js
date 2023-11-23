@@ -37,7 +37,12 @@ export default function RootLayout({ children }) {
             <Footer />
           </footer>
 
-          <Toaster />
+          <Toaster
+            toastOptions={{
+              // Define default options
+              duration: 4000,
+            }}
+          />
         </AppProvider>
 
       </body>

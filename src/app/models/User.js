@@ -14,9 +14,13 @@ const UserSchema = new Schema({
         type: String, 
         reguired: true,
     }, 
-    image: {
-        type: String
-    },
+    image: { type: String },
+    phone: { type: String },
+    country: {  type: String },
+    zip: {type: String },
+    city: { type: String },
+    address: { type: String },
+
 }, {timestamps: true})
 
 

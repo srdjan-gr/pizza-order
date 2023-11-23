@@ -51,11 +51,8 @@ const LoginForm = () => {
           headers: {'Content-Type': 'application/json'}
       })
 
-      if(response.ok){
-        resolve()
-      }else{
-        reject()
-      }
+      response.ok ? resolve() : reject()
+      
     })
 
     await toast.promise(registerPromise, {
