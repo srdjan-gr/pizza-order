@@ -71,16 +71,16 @@ const Header = () => {
 
                             {sessionStatus === 'authenticated' && (
                                 <div 
-                                    type='button'
-                                    className='btn_main bg-pizza_wood-500 hover:bg-pizza_wood-400 text-white flex items-center justify-center'
+                                    className='btn_main bg-pizza_wood-500 hover:bg-pizza_wood-400 text-white flex items-center justify-center cursor-pointer '
+                                    onClick={openUserMenu}
                                 > 
                                     {/* <p className='text-sm'>Hi, {userName[0]}</p> - Moze i ovako index da se upise */}
                                     <p className='text-sm'>Hi, {userName}</p>
                                     <Image src={userImage} alt='user-image' width={20} height={20} className='rounded-full'/>
                                     <IoIosArrowDown 
-                                        className='w-4 h-4 cursor-pointer '
-                                        onClick={openUserMenu}
-                                    />
+                                        className='w-4 h-4 '
+                                        />
+                                    
                                 </div>
                             )}
 
