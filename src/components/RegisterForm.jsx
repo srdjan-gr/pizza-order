@@ -75,6 +75,8 @@ const LoginForm = () => {
             onSubmit={handleFormSubmit}
         >
 
+          <h1 className='mb-5 text-xl text-gray-400 w-full max-w-xs underline'>Register form</h1>
+
           <div className="form-control w-full max-w-xs mb-4">
             <label className="label">
               <span className="label-text text-gray-400">Enter your email</span>

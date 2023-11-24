@@ -79,8 +79,7 @@ const Header = () => {
                                     <Image src={userImage} alt='user-image' width={20} height={20} className='rounded-full'/>
                                     <IoIosArrowDown 
                                         className='w-4 h-4 '
-                                        />
-                                    
+                                    />
                                 </div>
                             )}
 

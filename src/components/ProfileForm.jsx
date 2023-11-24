@@ -11,8 +11,6 @@ import toast, { Toaster } from 'react-hot-toast';
 import Spinner from './Spinner';
 
 
-
-
 const ProfileForm = () => {
 
     const session = useSession()
@@ -131,8 +129,10 @@ const ProfileForm = () => {
                             >
                                 {userImage && (
                                     <Image 
-                                        className='rounded-full' 
-                                        src={userImage}  alt='avatar'  
+                                        className='rounded-full object-contain' 
+                                        src={userImage}  alt='avatar'
+                                        // width={80}
+                                        // height={80}
                                         layout="fill"
                                         objectFit='contain'
                                     />

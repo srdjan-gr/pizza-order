@@ -69,6 +69,7 @@ const LoginForm = () => {
           className='w-full m-auto flex flex-col justify-center items-center' 
           onSubmit={handleFormSubmit}  
         >
+          <h1 className='mb-5 text-xl text-gray-400 w-full max-w-xs underline'>Login form</h1>
 
           <div className="form-control w-full max-w-xs mb-4">
             <label className="label">

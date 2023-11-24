@@ -15,11 +15,6 @@ const UserSchema = new Schema({
         reguired: true,
     }, 
     image: { type: String },
-    phone: { type: String },
-    country: {  type: String },
-    zip: {type: String },
-    city: { type: String },
-    address: { type: String },
 
 }, {timestamps: true})
 
