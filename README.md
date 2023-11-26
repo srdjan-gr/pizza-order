@@ -1,0 +1,1 @@
+Pizza ordering app made for training Next.js 
