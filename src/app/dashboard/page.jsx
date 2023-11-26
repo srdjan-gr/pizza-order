@@ -48,7 +48,7 @@ const page = () => {
   return (
     <section className='max-w-7xl h-screen m-auto pt-20'>
       
-      <h1 className='text-xl text-gray-400 w-full max-w-xs underline mt-5 mb-10'>Admin dashboard</h1>
+      <h1 className='text-xl text-gray-400 w-full max-w-xs underline mt-5 mb-10 text-center'>Admin dashboard</h1>
       
       {/* left Navigation */}
       <nav className='flex flex-col items-start w-1/6 border-r border-gray-300 '>
