@@ -6,10 +6,11 @@ import { signOut, useSession } from 'next-auth/react'
 import { IoLogOutOutline } from "react-icons/io5";
 import { BsPersonGear } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
-import { HiOutlineArchiveBoxArrowDown } from "react-icons/hi2"
+import { HiOutlineArchiveBoxArrowDown, HiOutlineCog6Tooth } from "react-icons/hi2"
 
 
-const MobileMenu = ({ mobile, setMobile }) => {
+
+const MobileMenu = ({ mobile, setMobile, isAdminProfile }) => {
 
     const session = useSession()
     const sessionStatus = session.status
@@ -67,23 +68,32 @@ const MobileMenu = ({ mobile, setMobile }) => {
                             </div>
                         </div>
 
+                        {isAdminProfile && (
+                            <Link 
+                                href={'/dashboard'} 
+                                onClick={handleMobileMenu} 
+                                className="flex items-center justify-between text-xl px-3 rounded-md cursor-pointer w-3/5 mb-3 m-auto text-pizza_wood-300">Dashboard
+                                <HiOutlineCog6Tooth className="w-6 h-6 ml-5"/>
+                            </Link>
+                        )}
+
                         <Link 
                             href={'/userProfile'} 
                             onClick={handleMobileMenu} 
                             className="flex items-center justify-between text-xl px-3 rounded-md cursor-pointer w-3/5 mb-3 m-auto text-gray-400">User Profile 
-                            <BsPersonGear className="w-7 h-7 ml-5"/>
+                            <BsPersonGear className="w-6 h-6 ml-5"/>
                         </Link>
                         <Link 
                             href={'/userProfile'} 
                             onClick={handleMobileMenu} 
                             className="flex items-center justify-between text-xl px-3 rounded-md cursor-pointer w-3/5 mb-3 m-auto text-gray-400">Previous Orders 
-                            <HiOutlineArchiveBoxArrowDown className="w-7 h-7 ml-5"/>
+                            <HiOutlineArchiveBoxArrowDown className="w-6 h-6 ml-5"/>
                         </Link>
                         <p 
                             className="flex items-center justify-between text-xl px-3 rounded-mdcursor-pointer w-3/5 mb-3  m-auto cursor-pointer text-gray-400"
                             onClick={() => signOut()} 
                             >Logout 
-                            <IoLogOutOutline className="w-7 h-7 ml-5"/>  
+                            <IoLogOutOutline className="w-6 h-6 ml-5"/>  
                         </p>
 
                         <div className="divider text-gray-300"></div>

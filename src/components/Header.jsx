@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { signOut, useSession } from 'next-auth/react'
 
@@ -19,12 +19,25 @@ const Header = () => {
 
     const [mobile, setMobile] = useState(false)
     const [ userMenu, setUserMenu ] = useState(false)
+    const [ isAdminProfile, setIsAdminProfile ] = useState(false)
 
     const session = useSession()
     const sessionStatus = session.status
 
     const userData = session.data?.user
     const userImage = userData?.image 
+
+    useEffect(() => {
+
+        if(sessionStatus === 'authenticated'){
+            
+            fetch('/api/userProfile').then(response =>response.json().then(data => {
+                setIsAdminProfile(data.admin)
+            }))
+        }
+      
+    }, [sessionStatus, session])
+    
 
 
     let userName = userData?.name || userData?.email
@@ -102,8 +115,8 @@ const Header = () => {
 
             </div>
 
-            <UserMenu userMenu={userMenu} setUserMenu={setUserMenu} />
-            <MobileMenu mobile={mobile} setMobile={setMobile} />
+            <UserMenu userMenu={userMenu} setUserMenu={setUserMenu} isAdminProfile={isAdminProfile} />
+            <MobileMenu mobile={mobile} setMobile={setMobile} isAdminProfile={isAdminProfile}/>
         </>
     )
 }
