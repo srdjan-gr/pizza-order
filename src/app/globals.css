@@ -11,6 +11,10 @@
     @apply px-5 py-2 rounded-full flex justify-center items-center gap-2
 }
 
+.btn_second {
+    @apply px-5 py-3 rounded-xl flex justify-center items-center gap-2
+}
+
 .btn_disabled{
     @apply bg-gray-500
 }

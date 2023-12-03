@@ -56,7 +56,7 @@ const dashboardMenu = () => {
 
     return (
       <nav className='flex flex-col items-start w-1/6 '>
-        <div className='flex flex-col items-start py-5 ps-2 pe-4 w-full border-r border-gray-300 '>
+        <div className='flex flex-col items-start py-5 ps-2 pe-6 w-full border-r border-gray-300 '>
 
         {dashboardMenuLinksUser.map((item) => (
               <Link 
@@ -77,7 +77,7 @@ const dashboardMenu = () => {
 
     return (
       <nav className='flex flex-col items-start w-1/6 '>
-        <div className='flex flex-col items-start py-5 ps-2 pe-4 w-full border-r border-gray-300 '>
+        <div className='flex flex-col items-start py-5 ps-2 pe-6 w-full border-r border-gray-300 '>
 
           { dashboardMenuLinksAdmin.map((item) => (
               <Link 

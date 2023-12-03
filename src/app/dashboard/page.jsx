@@ -38,13 +38,6 @@ const page = () => {
     return <Loading />
   }
 
-  // Loading to prevent 
-  // if(isLoadingProfile){
-  //   return (
-  //     <p className='text-gray-400'>Loading ...</p>
-  //   )
-  // }
-
 
 
   if(!isAdminProfile ){
