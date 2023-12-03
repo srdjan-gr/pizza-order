@@ -87,7 +87,7 @@ const Header = () => {
                     
                     <div className="flex justify-center items-center gap-4" >
 
-                        <div className='hidden md:flex justify-center items-center gap-5 text-gray-800'>
+                        <div className='hidden md:flex justify-center items-center gap-4 text-gray-800'>
 
                             {navLinks.map((item) => {
                                 return <Link href={item.href} className={`${pathname === item.href && 'underline underline-offset-4 decoration-pizza_black'} link_hover`}  >{item.title}</Link>

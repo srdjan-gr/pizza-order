@@ -19,12 +19,17 @@ const dashboardMenu = () => {
   const sessionStatus = session.status
 
 
-  const dashboardMenuLinks = [
+  const dashboardMenuLinksAdmin = [
     {'title': 'Dashboard', 'href': '/dashboard', 'icon': <HiOutlineCog6Tooth  className='ml-3 h-6 w-6'/>},
     {'title': 'Orders', 'href': '/orders', 'icon': <LiaCartPlusSolid   className='ml-3 h-6 w-6'/>},
     {'title': 'Categories', 'href': '/categories', 'icon': <HiOutlineSquares2X2  className='ml-3 h-6 w-6'/>},
     {'title': 'Pizza Menu', 'href': '/menu', 'icon': <HiOutlineDocumentText className='ml-3 h-6 w-6'/>},
     {'title': 'Users', 'href': '/users', 'icon': <LiaUserFriendsSolid  className='ml-3 h-6 w-6'/>},
+    {'title': 'User Profile', 'href': '/userProfile', 'icon': <LiaUserCogSolid className='ml-3 h-6 w-6'/> },
+  ]
+
+  const dashboardMenuLinksUser = [
+    {'title': 'Orders', 'href': '/orders', 'icon': <LiaCartPlusSolid   className='ml-3 h-6 w-6'/>},
     {'title': 'User Profile', 'href': '/userProfile', 'icon': <LiaUserCogSolid className='ml-3 h-6 w-6'/> },
   ]
 
@@ -52,20 +57,16 @@ const dashboardMenu = () => {
     return (
       <nav className='flex flex-col items-start w-1/6 '>
         <div className='flex flex-col items-start py-5 ps-2 pe-4 w-full border-r border-gray-300 '>
+
+        {dashboardMenuLinksUser.map((item) => (
               <Link 
-                  href='userProfile'
-                  className={`${pathname === 'orders' && 'bg-pizza_red-50 rounded-md px-5 py-1 text-white'} w-full text-lg text-pizza_wood-400 mb-2 hover:text-pizza_wood-600 flex items-center justify-between hover:bg-pizza_wood-50 hover:rounded-md px-5 py-1`}
-                >
-                  Orders
-                  <HiOutlineSquares2X2  className='ml-3 h-6 w-6'/>
+                href={item.href} 
+                className={`${pathname === item.href && 'bg-pizza_red-50 rounded-md px-5 py-1 text-white'} w-full text-lg text-pizza_wood-400 mb-2 hover:text-white flex items-center justify-between hover:bg-pizza_red-100 hover:rounded-md px-5 py-1`}
+              >
+                {item.title}
+                {item.icon}
               </Link>
-              <Link 
-                  href='userProfile'
-                  className={`${pathname === 'userProfile' && 'bg-pizza_red-50 rounded-md px-5 py-1 text-white'} w-full text-lg text-pizza_wood-400 mb-2 hover:text-pizza_wood-600 flex items-center justify-between hover:bg-pizza_wood-50 hover:rounded-md px-5 py-1`}
-                >
-                  User Profile
-                  <HiOutlineCog6Tooth className='ml-3 h-6 w-6'/>
-              </Link>
+            ))}
         </div>
       </nav>
     )
@@ -77,17 +78,16 @@ const dashboardMenu = () => {
     return (
       <nav className='flex flex-col items-start w-1/6 '>
         <div className='flex flex-col items-start py-5 ps-2 pe-4 w-full border-r border-gray-300 '>
-          {
-            dashboardMenuLinks.map((item) => (
+
+          { dashboardMenuLinksAdmin.map((item) => (
               <Link 
                 href={item.href} 
-                className={`${pathname === item.href && 'bg-pizza_red-50 rounded-md px-5 py-1 text-white'} w-full text-lg text-pizza_wood-400 mb-2 hover:text-pizza_wood-600 flex items-center justify-between hover:bg-pizza_wood-50 hover:rounded-md px-5 py-1`}
+                className={`${pathname === item.href && 'bg-pizza_red-50 rounded-md px-5 py-1 text-white'} w-full text-lg text-pizza_wood-400 mb-2 hover:text-white flex items-center justify-between hover:bg-pizza_red-100 hover:rounded-md px-5 py-1`}
               >
                 {item.title}
                 {item.icon}
               </Link>
-            ))
-          }
+            ))}
         </div>
       </nav>
     )
