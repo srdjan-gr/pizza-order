@@ -12,27 +12,41 @@ import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { IoIosArrowDown } from "react-icons/io";
 import MobileMenu from './MobileMenu'
 import UserMenu from './UserMenu'
+import { usePathname } from 'next/navigation'
 
 
 
 const Header = () => {
 
+    const navLinks = [
+        {'title': 'Home', 'href': '/'},
+        {'title': 'Menu', 'href': '/menu'},
+        {'title': 'Contact', 'href': '/contact'},
+        {'title': 'About', 'href': '/about'},
+    ]
+
+    const [ isAdminProfile, setIsAdminProfile ] = useState(false)
+    const [ isLoadingProfile, setIsLoadingProfile ] = useState(false)
     const [mobile, setMobile] = useState(false)
     const [ userMenu, setUserMenu ] = useState(false)
-    const [ isAdminProfile, setIsAdminProfile ] = useState(false)
+
+    const pathname = usePathname()
 
     const session = useSession()
     const sessionStatus = session.status
+
+    console.log(sessionStatus)
 
     const userData = session.data?.user
     const userImage = userData?.image 
 
     useEffect(() => {
+        setIsLoadingProfile(true)
 
         if(sessionStatus === 'authenticated'){
-            
             fetch('/api/userProfile').then(response =>response.json().then(data => {
                 setIsAdminProfile(data.admin)
+                setIsLoadingProfile(false)
             }))
         }
       
@@ -46,8 +60,6 @@ const Header = () => {
     }else{
         userName = userData?.email
     }
-
-    // console.log(session)
 
 
     const handleMobileMenu = () => {
@@ -74,15 +86,16 @@ const Header = () => {
                     </Link>
                     
                     <div className="flex justify-center items-center gap-4" >
-                        <div className='hidden md:flex justify-center items-center gap-4 text-gray-800'>
-                            <Link className='link_hover' href={'/'} >Home</Link>
-                            <Link className='link_hover' href={'/menu'} >Menu</Link>
-                            <Link className='link_hover' href={'/contact'} >Contact</Link>
-                            <Link className='link_hover' href={'/about'} >About</Link>
-                            <Link className='btn_main bg-pizza_green-500 hover:bg-pizza_green-400 text-white' href={'/order'} >Order</Link>
 
+                        <div className='hidden md:flex justify-center items-center gap-5 text-gray-800'>
 
-                            {sessionStatus === 'authenticated' && (
+                            {navLinks.map((item) => {
+                                return <Link href={item.href} className={`${pathname === item.href && 'underline underline-offset-4 decoration-pizza_black'} link_hover`}  >{item.title}</Link>
+                            })}
+
+                            <Link className='btn_main bg-pizza_green-500 hover:bg-pizza_green-400 text-white' href={'/order'}>Order</Link>
+
+                            {sessionStatus === 'authenticated' ? (
                                 <div 
                                     className='btn_main bg-pizza_wood-500 hover:bg-pizza_wood-400 text-white flex items-center justify-center cursor-pointer '
                                     onClick={openUserMenu}
@@ -90,17 +103,14 @@ const Header = () => {
                                     {/* <p className='text-sm'>Hi, {userName[0]}</p> - Moze i ovako index da se upise */}
                                     <p className='text-sm'>Hi, {userName}</p>
                                     <Image src={userImage} alt='user-image' width={20} height={20} className='rounded-full'/>
-                                    <IoIosArrowDown 
-                                        className='w-4 h-4 '
-                                    />
+                                    <IoIosArrowDown className='w-4 h-4 '/>
                                 </div>
-                            )}
-
-                            {sessionStatus === 'unauthenticated' && (
-                                <Link className='btn_main bg-pizza_orange-500 hover:bg-pizza_orange-400 text-white' href={'/login'} >Login</Link>
+                            ) : (
+                                <Link className='btn_main bg-pizza_orange-500 hover:bg-pizza_orange-400 text-white' href={'/login'} >Login</Link>   
                             )}
 
                         </div>
+                            
                         
                         <div className="flex justify-center items-center gap-4 text-gray-800" >
                             <RiMenuFoldLine 

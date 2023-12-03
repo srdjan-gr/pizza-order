@@ -111,7 +111,7 @@ const ProfileForm = () => {
 
 
   return (
-    <section className='pt-32 w-full md:h-screen m-auto overflow'>
+    <section className=' m-auto overflow'>
 
         <form 
           className='w-full m-auto flex flex-col justify-start items-center' 

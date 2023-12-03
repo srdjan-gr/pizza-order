@@ -6,17 +6,19 @@ import { useState, useEffect } from 'react';
 
 import { redirect } from 'next/navigation';
 import Loading from '@/components/Loading';
-import DashboardMenu from '@/components/DashboardMenu';
+import DashboardMenu from '@/components/dashboard/DashboardMenu';
 
 const page = () => {
 
   const [ isAdminProfile, setIsAdminProfile ] = useState(false)
+  const [ isLoadingProfile, setIsLoadingProfile ] = useState(false)
 
   const session = useSession()
   const sessionStatus = session.status
 
   
   useEffect(() => {
+    setIsLoadingProfile(true)
         
     // Na ucitavanju uzimamo podatke o korisniku iz api/userprofile GET
     if(sessionStatus === 'authenticated'){
@@ -24,15 +26,25 @@ const page = () => {
         .then(response => {response.json()
           .then(data => {
               setIsAdminProfile(data.admin)
+              setIsLoadingProfile(false)
           })
       })
     }
   }, [sessionStatus, session])
 
 
-  if(session.status === 'loading'){
+  // Spiner for page loading
+  if(session.status === 'loading' || isLoadingProfile){
     return <Loading />
   }
+
+  // Loading to prevent 
+  // if(isLoadingProfile){
+  //   return (
+  //     <p className='text-gray-400'>Loading ...</p>
+  //   )
+  // }
+
 
 
   if(!isAdminProfile ){

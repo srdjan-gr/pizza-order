@@ -1,0 +1,98 @@
+'use client'
+
+import { useSession } from 'next-auth/react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { HiOutlineCog6Tooth, HiOutlineUsers, HiOutlineDocumentText, HiOutlineSquares2X2 } from "react-icons/hi2"
+import { LiaUserCogSolid, LiaUserFriendsSolid, LiaCartPlusSolid } from "react-icons/lia";
+
+
+const dashboardMenu = () => {
+
+  const [isAdminProfile, setIsAdminProfile] = useState(false)
+  const [ isLoadingProfile, setIsLoadingProfile ] = useState(false)
+
+  const pathname =  usePathname()
+
+  const session = useSession()
+  const sessionStatus = session.status
+
+
+  const dashboardMenuLinks = [
+    {'title': 'Dashboard', 'href': '/dashboard', 'icon': <HiOutlineCog6Tooth  className='ml-3 h-6 w-6'/>},
+    {'title': 'Orders', 'href': '/orders', 'icon': <LiaCartPlusSolid   className='ml-3 h-6 w-6'/>},
+    {'title': 'Categories', 'href': '/categories', 'icon': <HiOutlineSquares2X2  className='ml-3 h-6 w-6'/>},
+    {'title': 'Pizza Menu', 'href': '/menu', 'icon': <HiOutlineDocumentText className='ml-3 h-6 w-6'/>},
+    {'title': 'Users', 'href': '/users', 'icon': <LiaUserFriendsSolid  className='ml-3 h-6 w-6'/>},
+    {'title': 'User Profile', 'href': '/userProfile', 'icon': <LiaUserCogSolid className='ml-3 h-6 w-6'/> },
+  ]
+
+  useEffect(() => {
+    setIsLoadingProfile(true)
+        
+    if(sessionStatus === 'authenticated'){
+        fetch('/api/userProfile').then(response => response.json().then(data => {
+            setIsAdminProfile(data.admin)
+            setIsLoadingProfile(false)
+        }))
+    }
+  }, [session, sessionStatus])
+
+
+  if(isLoadingProfile){
+    return (
+      <p className='text-gray-400 w-1/6'>Loading ...</p>
+    )
+  }
+
+
+  if(!isAdminProfile){
+
+    return (
+      <nav className='flex flex-col items-start w-1/6 '>
+        <div className='flex flex-col items-start py-5 ps-2 pe-4 w-full border-r border-gray-300 '>
+              <Link 
+                  href='userProfile'
+                  className={`${pathname === 'orders' && 'bg-pizza_red-50 rounded-md px-5 py-1 text-white'} w-full text-lg text-pizza_wood-400 mb-2 hover:text-pizza_wood-600 flex items-center justify-between hover:bg-pizza_wood-50 hover:rounded-md px-5 py-1`}
+                >
+                  Orders
+                  <HiOutlineSquares2X2  className='ml-3 h-6 w-6'/>
+              </Link>
+              <Link 
+                  href='userProfile'
+                  className={`${pathname === 'userProfile' && 'bg-pizza_red-50 rounded-md px-5 py-1 text-white'} w-full text-lg text-pizza_wood-400 mb-2 hover:text-pizza_wood-600 flex items-center justify-between hover:bg-pizza_wood-50 hover:rounded-md px-5 py-1`}
+                >
+                  User Profile
+                  <HiOutlineCog6Tooth className='ml-3 h-6 w-6'/>
+              </Link>
+        </div>
+      </nav>
+    )
+  }
+
+
+  if(isAdminProfile){
+
+    return (
+      <nav className='flex flex-col items-start w-1/6 '>
+        <div className='flex flex-col items-start py-5 ps-2 pe-4 w-full border-r border-gray-300 '>
+          {
+            dashboardMenuLinks.map((item) => (
+              <Link 
+                href={item.href} 
+                className={`${pathname === item.href && 'bg-pizza_red-50 rounded-md px-5 py-1 text-white'} w-full text-lg text-pizza_wood-400 mb-2 hover:text-pizza_wood-600 flex items-center justify-between hover:bg-pizza_wood-50 hover:rounded-md px-5 py-1`}
+              >
+                {item.title}
+                {item.icon}
+              </Link>
+            ))
+          }
+        </div>
+      </nav>
+    )
+  }
+
+}
+
+export default dashboardMenu
