@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Spinner from '../Spinner'
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -7,6 +7,18 @@ const DashboardCategoryForm = () => {
 
     const [isCreating, setIsCreating] = useState(false)
     const [category, setCategory] = useState('')
+
+
+    // const fetchCategories = ()  => {
+    //     setIsFetched(true)
+    //     fetch('/api/categories').then(res => {
+    //         res.json().then(categories => {
+    //             setAllCategories(categories)
+    //             setIsFetched(false)
+    //         })
+    //     })
+    // }
+  
 
 
     const handleFormSubmit = async (e) => {
@@ -25,8 +37,10 @@ const DashboardCategoryForm = () => {
             body: JSON.stringify({name:category}),
             headers: {'Content-Type': 'application/json'}
         })
-       
+
+        // fetchCategories()
         setIsCreating(false)
+        setCategory('')
     }
 
 

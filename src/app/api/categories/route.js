@@ -14,19 +14,24 @@ export async function POST(req){
 }
 
 
-// Get user by emailb
-// export async function GET() {
+// Get all categories
+export async function GET() {
 
-//   mongoose.connect(process.env.MONGO_URL)
+  mongoose.connect(process.env.MONGO_URL)
+  return Response.json(
+    await Category.find()
+  )
+}
 
-//   const session = await getServerSession(authOptions);
-//   const email = session?.user?.email
 
-//   if(!email){
-//     return Response.json({})
-//   }
-  
-//   const user = await User.findOne({email}).lean()
-//   const userInfo = await UserInfo.findOne({email}).lean()
-//   return Response.json({...user, ...userInfo})
-// }
+// Update category
+export async function PUT(req) {
+
+    const {_id, name} = await req.json()
+
+    mongoose.connect(process.env.MONGO_URL)
+   
+    await Category.updateOne({_id}, {name})
+
+    return Response.json(true)
+}

@@ -47,7 +47,7 @@ const dashboardMenu = () => {
 
   if(isLoadingProfile){
     return (
-      <p className='text-gray-400 w-1/6'>Loading ...</p>
+      <p className='text-gray-400 w-1/6'>Loading...</p>
     )
   }
 
@@ -56,7 +56,7 @@ const dashboardMenu = () => {
 
     return (
       <nav className='flex flex-col items-start w-1/6 '>
-        <div className='flex flex-col items-start py-5 ps-2 pe-6 w-full border-r border-gray-300 '>
+        <div className='flex flex-col items-start py-5 ps-2 pe-8 w-full border-r border-gray-300 '>
 
         {dashboardMenuLinksUser.map((item) => (
               <Link 
@@ -78,7 +78,7 @@ const dashboardMenu = () => {
 
     return (
       <nav className='flex flex-col items-start w-1/6 '>
-        <div className='flex flex-col items-start py-5 ps-2 pe-6 w-full border-r border-gray-300 '>
+        <div className='flex flex-col items-start py-5 ps-2 pe-8 w-full border-r border-gray-300 '>
 
           { dashboardMenuLinksAdmin.map((item) => (
               <Link 

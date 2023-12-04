@@ -5,7 +5,11 @@ const CategorySchema = new Schema({
     name: {
         type: String,
         requireed: true, 
-        // unique: true
+        unique: true
+    },
+    published: {
+        type: Boolean, 
+        default: false
     },
 
 }, {timestamps: true})
