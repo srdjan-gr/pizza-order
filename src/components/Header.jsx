@@ -35,7 +35,6 @@ const Header = () => {
     const session = useSession()
     const sessionStatus = session.status
 
-    console.log(sessionStatus)
 
     const userData = session.data?.user
     const userImage = userData?.image 
@@ -90,7 +89,7 @@ const Header = () => {
                         <div className='hidden md:flex justify-center items-center gap-4 text-gray-800'>
 
                             {navLinks.map((item) => {
-                                return <Link href={item.href} className={`${pathname === item.href && 'underline underline-offset-4 decoration-pizza_black'} link_hover`}  >{item.title}</Link>
+                                return <Link key={item.title} href={item.href} className={`${pathname === item.href && 'underline underline-offset-4 decoration-pizza_black'} link_hover`}  >{item.title}</Link>
                             })}
 
                             <Link className='btn_main bg-pizza_green-500 hover:bg-pizza_green-400 text-white' href={'/order'}>Order</Link>

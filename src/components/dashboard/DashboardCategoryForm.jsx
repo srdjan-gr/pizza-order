@@ -1,15 +1,34 @@
 import React, { useState } from 'react'
 import Spinner from '../Spinner'
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const DashboardCategoryForm = () => {
 
-    const [isCreating, setIsCreating] = useState()
-    const [category, setCategory] = useState()
+    const [isCreating, setIsCreating] = useState(false)
+    const [category, setCategory] = useState('')
 
-    const handleFormSubmit = (e) => {
+
+    const handleFormSubmit = async (e) => {
         e.preventDefault()
 
+        setIsCreating(true)
+
+        if(!category){
+            toast.error('All fields are required!')
+            setIsCreating(false)
+            return
+        }
+
+        const response =  await fetch('/api/categories', {
+            method: 'POST',
+            body: JSON.stringify({name:category}),
+            headers: {'Content-Type': 'application/json'}
+        })
+       
+        setIsCreating(false)
     }
+
 
     return (
         <section className=' '>
@@ -25,23 +44,23 @@ const DashboardCategoryForm = () => {
                     </label>
 
                     <input 
-                    type="text" 
-                    placeholder="Category name" 
-                    className="input input-bordered w-full max-w-xs input-md rounded-xl" 
-                    disabled = {isCreating} 
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
+                        type="text" 
+                        placeholder="Category name" 
+                        className="input input-bordered w-full max-w-xs input-md rounded-xl" 
+                        disabled = {isCreating} 
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
                     />
                 </div>
 
                 <button  
+                    type='submit'
                     className={`${isCreating ? 'bg-gray-300' : 'bg-pizza_green-500 border-0 hover:bg-pizza_green-400'} btn btn-primary  text-white max-w-xs relative rounded-xl`}
                     disabled = {isCreating}  
                 >
                     Create category
                     {isCreating &&  <Spinner />} 
                 </button>
-
             </form>
         </section>
     )

@@ -60,6 +60,7 @@ const dashboardMenu = () => {
 
         {dashboardMenuLinksUser.map((item) => (
               <Link 
+                key={item.title}
                 href={item.href} 
                 className={`${pathname === item.href && 'bg-pizza_red-50 rounded-md px-5 py-1 text-white'} w-full text-lg text-pizza_wood-400 mb-2 hover:text-white flex items-center justify-between hover:bg-pizza_red-100 hover:rounded-md px-5 py-1`}
               >
@@ -81,6 +82,7 @@ const dashboardMenu = () => {
 
           { dashboardMenuLinksAdmin.map((item) => (
               <Link 
+                key={item.title}
                 href={item.href} 
                 className={`${pathname === item.href && 'bg-pizza_red-50 rounded-md px-5 py-1 text-white'} w-full text-lg text-pizza_wood-400 mb-2 hover:text-white flex items-center justify-between hover:bg-pizza_red-100 hover:rounded-md px-5 py-1`}
               >
