@@ -7,7 +7,7 @@ import Link from 'next/link'
 import DashboardMenu from '@/components/dashboard/DashboardMenu';
 import DashboardCategoryForm from '@/components/dashboard/DashboardCategoryForm';
 import CategoryList from '@/components/dashboard/CategoryList';
-import Loading from '@/components/Loading';
+import Loading from '@/components/utility/Loading';
 
 
 const page = () => {

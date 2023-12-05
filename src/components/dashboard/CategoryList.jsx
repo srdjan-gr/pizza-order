@@ -1,5 +1,10 @@
+import React from 'react'
 import { useEffect, useState } from "react";
 import { HiOutlinePencil, HiOutlineTrash  } from "react-icons/hi2";
+import toast, { Toaster } from 'react-hot-toast';
+import { confirm } from "react-confirm-box";
+
+import PopupOptions from '../../components/utility/ConfirmBox'
 
 const CategoryList = () => {
 
@@ -27,6 +32,14 @@ const CategoryList = () => {
         })
     }
 
+    // Confirm opttions
+    const options = {
+        labels: {
+            cancellable: "Cancel",
+            confirmable: "OK",
+        }
+    }
+
 
     // Split time from db
     const splitTime = (t) => {
@@ -51,8 +64,38 @@ const CategoryList = () => {
             headers: {'Content-Type': 'application/json'}
         })
 
-        setHandleEdit(!handleEdit)
-        fetchCategories()
+        if(response){
+            toast.success('Category edited successfuly.')
+            setHandleEdit(!handleEdit)
+            fetchCategories()
+        }else{
+            toast.error('Something went wrong!')
+        }
+    }
+
+
+    // Delete category
+    const handleCaregoryDelete = async (item) => {
+
+        const resoult = await confirm(`Are you sure you wan to delete category '${item.name}'?`, PopupOptions);
+
+
+        if(resoult){
+
+            const response =  await fetch('/api/categories', {
+                method: 'DELETE',
+                body: JSON.stringify({_id: item._id}),
+                headers: {'Content-Type': 'application/json'}
+            })
+    
+            if(response){
+                toast.success(`Category '${item.name}' deleted successfuly.`)
+                setHandleEdit(!handleEdit)
+                fetchCategories()
+            }else{
+                toast.error('Something went wrong!')
+            }
+        }
     }
 
 
@@ -68,7 +111,6 @@ const CategoryList = () => {
                             <th scope="col" className="px-6 py-4 font-medium text-gray-400">Name</th>
                             <th scope="col" className="px-6 py-4 font-medium text-gray-400">State</th>
                             <th scope="col" className="px-6 py-4 font-medium text-gray-400">Created At</th>
-                            {/* <th scope="col" className="px-6 py-4 font-medium text-gray-400">Team</th> */}
                             <th scope="col" className="px-6 py-4 font-medium text-gray-400">Options</th>
                         </tr>
                     </thead>
@@ -85,8 +127,8 @@ const CategoryList = () => {
                             </tr>  : 
                         allCategories?.map(item => {
                                 return(        
-                                    <>
-                                        <tr className="hover:bg-gray-50" key={item.name} id={item._id}>
+                                    <React.Fragment key={item.name}>
+                                        <tr className="hover:bg-gray-50">
 
                                             <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
                                                 <div className="text-sm w-[200px]">
@@ -108,19 +150,20 @@ const CategoryList = () => {
                                             
                                             <td className="px-6 py-4">{splitTime(item.createdAt)}</td>
 
-                                            {/* <td className="px-6 py-4">
-                                                <div className="flex gap-2">
-                                                    <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600">Design</span>
-                                                </div>
-                                            </td> */}
 
                                             <td className="px-6 py-4">
                                                 <div className="flex items-center gap-4">
+
+                                                    {/* Delete btn */}
                                                     <div 
                                                         x-data="{ tooltip: 'Delete' }" 
-                                                        href="#">
+                                                        href="#"
+                                                        onClick={() => handleCaregoryDelete(item)}
+                                                    >
                                                         <HiOutlineTrash className="w-5 h-5 text-gray-400 hover:text-gray-500 cursor-pointer" />
                                                     </div>
+
+                                                    {/* Update btn */}
                                                     <div 
                                                         x-data="{ tooltip: 'Edit' }" 
                                                         href="#"
@@ -174,7 +217,7 @@ const CategoryList = () => {
                                             </td>
                                             
                                         </tr> 
-                                    </>    
+                                    </React.Fragment>    
                                 )
                             })}
                     </tbody>
