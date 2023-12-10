@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const ProductCard = () => {
   return (
-    <article className="bg-white rounded-3xl shadow-xl w-[300px] pb-1">
+    <article className="bg-white rounded-3xl shadow-xl w-[300px] pb-1 transition-transform hover:-translate-y-1">
       <Image
         width={300}
         height={300}
@@ -14,8 +14,8 @@ const ProductCard = () => {
         className="rounded-tl-3xl rounded-tr-3xl"
       />
 
-      <div className="m-4 text-pizza_black">
-        <h2 className="text-xl mb-4">Pizza Margarita</h2>
+      <div className="m-4 my-5 text-pizza_black">
+        <h2 className="text-xl mb-5">Pizza Margarita</h2>
 
         <div className="flex justify-between items-center mb-8">
           <div className="flex flex-col justify-start">
@@ -36,7 +36,7 @@ const ProductCard = () => {
             Order
           </button>
 
-          <button className="btn_ghost border-[1px] border-pizza_wood-400 hover:bg-pizza_wood-400 ">
+          <button className="btn_ghost border-[1px] border-pizza_wood-400 hover:bg-pizza_wood-400">
             Check Menu
           </button>
 
