@@ -11,7 +11,7 @@ import toast from 'react-hot-toast';
 
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
-import Spinner from './Spinner';
+import Spinner from './utility/Spinner';
 
 
 const LoginForm = () => {

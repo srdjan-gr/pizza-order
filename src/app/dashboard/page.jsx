@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react'
 import { useState, useEffect } from 'react';
 
 import { redirect } from 'next/navigation';
-import Loading from '@/components/Loading';
+import Loading from '@/components/utility/Loading';
 import DashboardMenu from '@/components/dashboard/DashboardMenu';
 
 const page = () => {

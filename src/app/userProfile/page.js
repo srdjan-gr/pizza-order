@@ -1,6 +1,6 @@
 'use client'
 
-import Loading from "@/components/Loading"
+import Loading from "@/components/utility/Loading"
 import ProfileForm from "@/components/ProfileForm"
 import DashboardMenu from '@/components/dashboard/DashboardMenu';
 import { useSession } from "next-auth/react"

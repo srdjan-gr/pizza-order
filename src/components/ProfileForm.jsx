@@ -8,7 +8,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import toast, { Toaster } from 'react-hot-toast';
 
-import Spinner from './Spinner';
+import Spinner from './utility/Spinner';
 
 
 const ProfileForm = () => {
@@ -26,6 +26,8 @@ const ProfileForm = () => {
     const [ zip, setZip ] = useState('')
     const [ city, setCity ] = useState('')
     const [ address, setAddress ] = useState('')
+
+    const [ data, setData ] = useState([])
 
     const [ savingChanges, setSavingChanges ] = useState(false)
     const [ uploadingImage, setUploadingImage ] = useState(false)
@@ -46,10 +48,12 @@ const ProfileForm = () => {
                     setZip(data.zip)
                     setCity(data.city)
                     setAddress(data.address)
+                    setData(data)
                 })
             })
         }
     }, [sessionStatus, session])
+
   
 
     //   Saving updated user info

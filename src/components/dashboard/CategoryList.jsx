@@ -48,14 +48,14 @@ const CategoryList = () => {
         return dbt[0] + ' ' + date[0]
     }
 
-    
+    // Edit form open function
     const openEditForm = (item) => {
         setHandleEdit(!handleEdit)
         setEditingItemValue(item.name)
     }
 
 
-    // Update category name
+    // Update category update
     const handleCaregoryUpdate = async (item) => {
 
         const response =  await fetch('/api/categories', {
@@ -101,10 +101,10 @@ const CategoryList = () => {
 
 
     return (
-        <section className=' '>
+        <section className=''>
             <h1 className='mb-5 text-xl text-gray-400 w-full max-w-xs underline'>Category list</h1>
 
-            <div className="overflow-hidden rounded-lg border border-gray-200  my-6 w-5/6 overflow-x-scroll md:overflow-hidden">
+            <div className="overflow-hidden rounded-lg border border-gray-200  my-6  overflow-x-scroll md:overflow-hidden">
                 <table className="w-full border-collapse bg-white text-left text-sm text-gray-500">
                     <thead className="bg-gray-50">
                         <tr>
@@ -180,10 +180,9 @@ const CategoryList = () => {
                                         </tr>
 
 
-                                        {/* Input raw for edit category */}
+                                        {/* Input raw for edit user */}
                                         <tr className={`${handleEdit && clickedItem === item._id ? 'visible border-red-300 w-full border-2 ' : 'hidden'} bg-red-50  `}>
-                                        {/* <tr className={` bg-red-50 hidden `}> */}
-
+                                        
                                             <th className="flex gap-3 ps-10 py-4 font-normal text-gray-900">
                                                 <div className="text-sm">
                                                     <div className=" text-gray-700 capitalize">

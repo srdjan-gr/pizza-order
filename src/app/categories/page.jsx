@@ -56,7 +56,7 @@ const page = () => {
                 {/* left Navigation */}
                 <DashboardMenu  />
 
-                <div className="flex flex-col px-10 w-5/6">
+                <div className="flex flex-col px-10 w-4/5">
                     {/* <UsersList /> */}
                     <DashboardCategoryForm />
 
