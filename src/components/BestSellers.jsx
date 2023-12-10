@@ -6,7 +6,7 @@ const BestSellers = () => {
       <h2 className="text-4xl font-ibm mb-2">Best Sellers</h2>
 
       <p className="text-lg mb-14 ">
-        Discover perfec <span className="text-orange-500">pizza</span> best
+        Discover perfect <span className="text-orange-500">pizza</span> best
         sellers.
       </p>
 

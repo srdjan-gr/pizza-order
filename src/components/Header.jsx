@@ -71,7 +71,11 @@ const Header = () => {
             <Image src={logo} alt="perfect-pizza-logo" width={50} height={50} />
           </Link>
 
-          <div className="hidden md:flex justify-center items-center gap-6 text-gray-800">
+          <div
+            className={`${
+              sessionStatus === "authenticated" && "translate-x-[40px]"
+            } hidden md:flex justify-center items-center gap-6 text-gray-800`}
+          >
             {navLinks.map((item) => {
               return (
                 <Link
@@ -107,7 +111,7 @@ const Header = () => {
               </div>
             ) : (
               <Link
-                className="btn_ghost border-2 border-pizza_orange-400  hover:bg-pizza_orange-400 text-pizza_black"
+                className="btn_ghost border-[1px] border-pizza_orange-400  hover:bg-pizza_orange-400 text-pizza_black hover:text-white"
                 href={"/login"}
               >
                 Login
