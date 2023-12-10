@@ -36,7 +36,7 @@ const ProductCard = () => {
             Order
           </button>
 
-          <button className="btn_ghost border-[1px] border-pizza_wood-400 hover:bg-pizza_wood-400">
+          <button className="btn_ghost border-[1px] border-pizza_wood-400 hover:bg-pizza_wood-400 hover:text-white">
             Check Menu
           </button>
 

@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import BestSellers from "@/components/BestSellers";
 import OurStyle from "@/components/OurStyle";
 import Menu from "@/components/Menu";
+import Location from "@/components/Location";
 
 const page = () => {
   return (
@@ -10,12 +11,10 @@ const page = () => {
 
       <main className="m-auto">
         <Hero />
-
         <BestSellers />
-
         <OurStyle />
-
         <Menu />
+        <Location />
       </main>
 
       {/* Footer imported from man Layout */}
