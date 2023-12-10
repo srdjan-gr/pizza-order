@@ -91,7 +91,7 @@ const Header = () => {
           <div className="flex justify-center items-center gap-4 text-gray-800">
             {sessionStatus === "authenticated" ? (
               <div
-                className="btn_ghost border-2 border-pizza_wood-400 hover:bg-pizza_wood-400 text-pizza_black flex items-center justify-center cursor-pointer"
+                className="btn_ghost border-[1px] border-pizza_wood-400 hover:bg-pizza_wood-400 text-pizza_black flex items-center justify-center cursor-pointer"
                 onClick={openUserMenu}
               >
                 {/* <p className='text-sm'>Hi, {userName[0]}</p> - Moze i ovako index da se upise */}
