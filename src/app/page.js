@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import BestSellers from "@/components/BestSellers";
+import OurStyle from "@/components/OurStyle";
 
 const page = () => {
   return (
@@ -10,6 +11,8 @@ const page = () => {
         <Hero />
 
         <BestSellers />
+
+        <OurStyle />
       </main>
 
       {/* Footer imported from man Layout */}

@@ -7,7 +7,7 @@ const BestSellers = () => {
 
       <p className="text-lg mb-14 ">
         Discover perfec <span className="text-orange-500">pizza</span> best
-        sellers
+        sellers.
       </p>
 
       <div className="flex flex-col md:flex-row items-center justify-between w-full">

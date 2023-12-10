@@ -42,7 +42,7 @@ const ProductCard = () => {
 
           <Link
             href={"/product"}
-            className="text-3xl cursor-pointer hover:text-gray-500"
+            className="text-3xl cursor-pointer text-gray-500 hover:text-gray-600"
           >
             <IoReaderOutline />
           </Link>
