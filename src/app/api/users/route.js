@@ -18,16 +18,17 @@ export async function GET() {
 }
 
 // Update user
-// export async function PUT(req) {
+export async function PUT(req) {
+  const { email, address, admin } = await req.json();
 
-//     const {_id, name} = await req.json()
+  console.log("ovo je test:", email, address, admin);
 
-//     mongoose.connect(process.env.MONGO_URL)
+  mongoose.connect(process.env.MONGO_URL);
 
-//     await Category.updateOne({_id}, {name})
+  await UserInfo.updateOne({ email }, { address, admin });
 
-//     return Response.json(true)
-// }
+  return Response.json(true);
+}
 
 // Update user
 // export async function DELETE(req) {

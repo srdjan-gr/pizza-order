@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Spinner from "../utility/Spinner";
 import toast, { Toaster } from "react-hot-toast";
 
-const DashboardCategoryForm = () => {
+const DashboardCategoryForm = ({ setIsCreatedCategory, IsCreatedCategory }) => {
   const [isCreating, setIsCreating] = useState(false);
   const [category, setCategory] = useState("");
 
@@ -10,6 +10,7 @@ const DashboardCategoryForm = () => {
     e.preventDefault();
 
     setIsCreating(true);
+    setIsCreatedCategory(false);
 
     if (!category) {
       toast.error("All fields are required!");
@@ -26,6 +27,7 @@ const DashboardCategoryForm = () => {
     if (response) {
       toast.success("Category created.");
       setIsCreating(false);
+      setIsCreatedCategory(true);
       setCategory("");
     } else {
       toast.error("Something went wrong!");
