@@ -4,6 +4,11 @@ import OurStyle from "@/components/OurStyle";
 import Menu from "@/components/Menu";
 import Location from "@/components/Location";
 
+export const metadata = {
+  title: "Perfect Pizza",
+  description: "Best ordering online Pizza app ",
+};
+
 const page = () => {
   return (
     <>

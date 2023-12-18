@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Menu = () => {
   return (
-    <section className="w-full relative bg-gradient-to-r from-pizza_green-300/5 to-pizza_orange-400/5 ">
+    <section className="max-w-[1440px] m-auto rounded-3xl relative bg-gradient-to-r from-pizza_green-300/10 to-pizza_orange-400/10 mb-5">
       <div className="max-w-5xl m-auto py-16 flex flex-col items-center justify-between ">
         <h2 className="text-4xl font-ibm mb-2">Menu</h2>
 
@@ -22,7 +22,7 @@ const Menu = () => {
         </div>
 
         <Link
-          className="btn_ghost border-[1px] border-pizza_orange-500 hover:bg-pizza_orange-500 hover:text-white mt-20 text-xl"
+          className="btn_ghost border-[1px] border-pizza_wood-100 hover:bg-pizza_wood-100 hover:text-white mt-20 text-xl"
           href={"/menu"}
         >
           Check full menu...

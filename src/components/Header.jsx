@@ -20,6 +20,12 @@ const Header = () => {
     { title: "Menu", href: "/menu" },
     { title: "Contact", href: "/contact" },
     { title: "About", href: "/about" },
+    {
+      title: (
+        <HiOutlineShoppingCart className="w-6 h-6 cursor-pointer link_hover " />
+      ),
+      href: "/cart",
+    },
   ];
 
   const [isAdminProfile, setIsAdminProfile] = useState(false);
@@ -65,67 +71,76 @@ const Header = () => {
 
   return (
     <>
-      <div className="shadow-md shadow-gray-300/20 backdrop-blur-sm bg-white/30 absolute top-0 left-0 z-40 w-full ">
-        <div className="max-w-7xl flex justify-between items-center m-auto py-2 px-3 lg:px-0">
-          <Link href={"/"}>
-            <Image src={logo} alt="perfect-pizza-logo" width={50} height={50} />
-          </Link>
+      <nav className="w-full py-5">
+        <div className="bg_gray rounded-3xl max-w-[1440px] m-auto">
+          <div className=" max-w-7xl flex justify-between items-center m-auto py-2 px-3 lg:px-0">
+            <Link href={"/"}>
+              <Image
+                src={logo}
+                alt="perfect-pizza-logo"
+                height={50}
+                width={50}
+              />
+            </Link>
 
-          <div
-            className={`${
-              sessionStatus === "authenticated" && "translate-x-[40px]"
-            } hidden md:flex justify-center items-center gap-6 text-gray-800`}
-          >
-            {navLinks.map((item) => {
-              return (
-                <Link
-                  key={item.title}
-                  href={item.href}
-                  className={`${
-                    pathname === item.href &&
-                    "underline underline-offset-4 decoration-pizza_black"
-                  } link_hover`}
+            <div
+              className={`${
+                sessionStatus === "authenticated" && "translate-x-[40px]"
+              } hidden md:flex justify-center items-center gap-10 text-gray-800 bg-white px-10 py-1 rounded-full border-[1px] border-white`}
+            >
+              {navLinks.map((item) => {
+                return (
+                  <Link
+                    key={item.title}
+                    href={item.href}
+                    className={`${
+                      pathname === item.href &&
+                      " decoration-pizza_black bg_gray py-[6px] px-5 rounded-full"
+                    } link_hover`}
+                  >
+                    {item.title}
+                  </Link>
+                );
+              })}
+            </div>
+
+            <div className="flex justify-center items-center gap-4 text-gray-800">
+              {sessionStatus === "authenticated" ? (
+                <div
+                  className="btn_ghost border-[1px] border-pizza_wood-100 hover:bg-pizza_wood-100 text-pizza_black flex items-center justify-center cursor-pointer"
+                  onClick={openUserMenu}
                 >
-                  {item.title}
+                  {/* <p className='text-sm'>Hi, {userName[0]}</p> - Moze i ovako index da se upise */}
+                  <p className="text-sm">Hi, {userName}</p>
+                  <Image
+                    src={userImage}
+                    alt="user-image"
+                    width={20}
+                    height={20}
+                    className="rounded-full"
+                  />
+                  <IoIosArrowDown
+                    className={`${
+                      userMenu ? "rotate-180 w-4 h-4 " : ""
+                    }w-4 h-4 transition-all`}
+                  />
+                </div>
+              ) : (
+                <Link
+                  className="btn_ghost border-[1px] border-pizza_wood-200 hover:bg-pizza_wood-200 text-pizza_black hover:text-white"
+                  href={"/login"}
+                >
+                  Login
                 </Link>
-              );
-            })}
-          </div>
-
-          <div className="flex justify-center items-center gap-4 text-gray-800">
-            {sessionStatus === "authenticated" ? (
-              <div
-                className="btn_ghost border-[1px] border-pizza_wood-400 hover:bg-pizza_wood-400 text-pizza_black flex items-center justify-center cursor-pointer"
-                onClick={openUserMenu}
-              >
-                {/* <p className='text-sm'>Hi, {userName[0]}</p> - Moze i ovako index da se upise */}
-                <p className="text-sm">Hi, {userName}</p>
-                <Image
-                  src={userImage}
-                  alt="user-image"
-                  width={20}
-                  height={20}
-                  className="rounded-full"
-                />
-                <IoIosArrowDown className="w-4 h-4 " />
-              </div>
-            ) : (
-              <Link
-                className="btn_ghost border-[1px] border-pizza_orange-400  hover:bg-pizza_orange-400 text-pizza_black hover:text-white"
-                href={"/login"}
-              >
-                Login
-              </Link>
-            )}
-            <RiMenuFoldLine
-              className="w-6 h-6 cursor-pointer link_hover md:hidden "
-              onClick={handleMobileMenu}
-            />
-
-            <HiOutlineShoppingCart className="w-6 h-6 cursor-pointer link_hover " />
+              )}
+              <RiMenuFoldLine
+                className="w-6 h-6 cursor-pointer link_hover md:hidden "
+                onClick={handleMobileMenu}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
 
       <UserMenu
         userMenu={userMenu}

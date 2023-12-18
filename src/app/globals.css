@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .link_hover {
-  @apply hover:text-gray-700;
+  @apply hover:text-gray-600;
 }
 
 .btn_main {
@@ -20,6 +20,10 @@
 
 .btn_disabled {
   @apply bg-gray-500;
+}
+
+.bg_gray {
+  background-color: rgba(128, 128, 128, 0.08);
 }
 
 .mobile_active {

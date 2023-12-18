@@ -3,7 +3,7 @@ import "./globals.css";
 import { AppProvider } from "@/components/AppContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -15,19 +15,12 @@ const roboto = Roboto({
 //   weight: ["100", "200", "400", "500", "700"],
 // });
 
-export const metadata = {
-  title: "Perfect Pizza",
-  description: "Best ordering online Pizza app ",
-};
-
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
-      <body className={` text-pizza_black text-sm bg-pizza_light`} >
-
+      <body className={` text-pizza_black text-sm bg-pizza_light`}>
         <AppProvider>
-          <nav className='w-full m-auto'>
+          <nav className="w-full m-auto">
             <Header />
           </nav>
 
@@ -44,7 +37,6 @@ export default function RootLayout({ children }) {
             }}
           />
         </AppProvider>
-
       </body>
     </html>
   );
