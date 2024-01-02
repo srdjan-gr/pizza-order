@@ -10,7 +10,7 @@ import CategoryList from "@/components/dashboard/CategoryList";
 import Loading from "@/components/utility/Loading";
 import { sendStatusCode } from "next/dist/server/api-utils";
 
-const page = () => {
+const Page = () => {
   const [isAdminProfile, setIsAdminProfile] = useState(false);
   const [isLoadingProfile, setIsLoadingProfile] = useState(false);
 
@@ -77,4 +77,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
