@@ -11,6 +11,7 @@ const ProductCard = () => {
         width={300}
         height={300}
         src={PizzaImage}
+        alt="pizza image"
         className="rounded-tl-3xl rounded-tr-3xl"
       />
 
