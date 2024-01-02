@@ -1,17 +1,17 @@
-import RegisterForm from '@/components/RegisterForm'
+import RegisterForm from "@/components/RegisterForm";
 
-const page = () => {
+const Page = () => {
   return (
     <>
       {/* Header imported from man Layout */}
 
-      <main className='m-auto '>
+      <main className="m-auto ">
         <RegisterForm />
       </main>
 
       {/* Footer imported from man Layout */}
     </>
-  )
-}
+  );
+};
 
-export default page
+export default Page;

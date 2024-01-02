@@ -8,7 +8,7 @@ import DashboardMenu from "@/components/dashboard/DashboardMenu";
 import CreatePizzaForm from "@/components/dashboard/CreatePizzaForm";
 import Loading from "@/components/utility/Loading";
 
-const page = () => {
+const Page = () => {
   const [isAdminProfile, setIsAdminProfile] = useState(false);
   const [isLoadingProfile, setIsLoadingProfile] = useState(false);
   const [IsCreatedItem, setIsCreatedItem] = useState(false);
@@ -64,4 +64,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

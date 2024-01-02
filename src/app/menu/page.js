@@ -9,7 +9,7 @@ import CreatePizza from "@/components/dashboard/CreatePizza";
 import PizzaList from "@/components/dashboard/PizzaList";
 import Loading from "@/components/utility/Loading";
 
-const page = () => {
+const Page = () => {
   const [isAdminProfile, setIsAdminProfile] = useState(false);
   const [isLoadingProfile, setIsLoadingProfile] = useState(false);
   const [IsCreatedItem, setIsCreatedItem] = useState(false);
@@ -69,4 +69,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

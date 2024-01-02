@@ -6,7 +6,7 @@ import DashboardMenu from "@/components/dashboard/DashboardMenu";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   const session = useSession();
   const status = session.status;
 
@@ -36,4 +36,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
