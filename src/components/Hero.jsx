@@ -31,6 +31,7 @@ const Hero = () => {
             src={heroImg}
             height={600}
             width={800}
+            alt="hero image"
             className="rounded-3xl "
           />
         </div>
