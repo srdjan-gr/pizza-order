@@ -85,7 +85,7 @@ const DashboardMenu = () => {
   }, [session, sessionStatus]);
 
   if (isLoadingProfile) {
-    return <p className="text-gray-400 w-1/6">Loading...</p>;
+    return <p className="text-gray-400 w-1/5">Loading...</p>;
   }
 
   if (!isAdminProfile) {

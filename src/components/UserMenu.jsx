@@ -34,7 +34,7 @@ const UserMenu = ({ userMenu, setUserMenu, isAdminProfile }) => {
       </Link>
       <p
         className="flex items-center justify-between text-md px-3 py-1 rounded-md hover:bg-pizza_wood-100 cursor-pointer"
-        onClick={() => signOut()}
+        onClick={() => signOut({ callbackUrl: "/" })}
       >
         Logout
         <IoLogOutOutline className="w-6 h-6" />

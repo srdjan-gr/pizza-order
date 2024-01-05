@@ -20,7 +20,7 @@ const Page = () => {
   }
 
   return (
-    <section className="max-w-7xl h-screen m-auto pt-20">
+    <section className="max-w-7xl h-screen m-auto pt-5">
       <h1 className="text-xl text-gray-400 w-full max-w-xs underline mt-5 mb-10">
         User profile
       </h1>

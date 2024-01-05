@@ -7,6 +7,7 @@ import Link from "next/link";
 import DashboardMenu from "@/components/dashboard/DashboardMenu";
 import CreatePizzaForm from "@/components/dashboard/CreatePizzaForm";
 import Loading from "@/components/utility/Loading";
+import BackToLogin from "@/components/dashboard/BackToLogin";
 
 const Page = () => {
   const [isAdminProfile, setIsAdminProfile] = useState(false);
@@ -35,18 +36,11 @@ const Page = () => {
   }
 
   if (!isAdminProfile) {
-    return (
-      <section className="max-w-7xl h-screen w-full text-center m-auto pt-32 text-xl">
-        <p className="mb-2 text-gray-500">Not an admin!</p>
-        <Link href={"/login"} className="underline text-pizza_red-500">
-          Back to Login page
-        </Link>
-      </section>
-    );
+    return <BackToLogin />;
   }
 
   return (
-    <section className="max-w-7xl min-h-screen m-auto pt-20">
+    <section className="max-w-7xl min-h-screen m-auto pt-5">
       <h1 className="text-xl text-gray-400 w-full max-w-xs underline mt-5 mb-10">
         Create new pizza
       </h1>

@@ -86,7 +86,7 @@ const Header = () => {
             <div
               className={`${
                 sessionStatus === "authenticated" && "translate-x-[40px]"
-              } hidden md:flex justify-center items-center gap-10 text-gray-800 bg-white px-10 py-1 rounded-full border-[1px] border-white`}
+              } hidden md:flex justify-center items-center gap-10 text-gray-800 bg-white px-10 py-2 rounded-full border-[1px] border-white`}
             >
               {navLinks.map((item) => {
                 return (
