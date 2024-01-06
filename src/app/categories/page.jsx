@@ -26,15 +26,17 @@ const Page = () => {
   const sessionStatus = session.status;
 
   useEffect(() => {
-    setIsLoadingProfile(true);
+    if (window !== "undefined") {
+      setIsLoadingProfile(true);
 
-    if (sessionStatus === "authenticated") {
-      fetch("/api/userProfile").then((response) =>
-        response.json().then((data) => {
-          setIsAdminProfile(data.admin);
-          setIsLoadingProfile(false);
-        })
-      );
+      if (sessionStatus === "authenticated") {
+        fetch("/api/userProfile").then((response) =>
+          response.json().then((data) => {
+            setIsAdminProfile(data.admin);
+            setIsLoadingProfile(false);
+          })
+        );
+      }
     }
   }, [session, sessionStatus]);
 
