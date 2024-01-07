@@ -65,7 +65,7 @@ const DashboardCategoryForm = ({ setIsCreatedCategory, IsCreatedCategory }) => {
             isCreating
               ? "bg-gray-300"
               : "bg-pizza_green-500 border-0 hover:bg-pizza_green-400"
-          } btn btn-primary  text-white max-w-xs relative rounded-full`}
+          } btn_second  text-white max-w-xs relative rounded-full`}
           disabled={isCreating}
         >
           Create category

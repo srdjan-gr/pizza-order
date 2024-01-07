@@ -15,7 +15,7 @@
 }
 
 .btn_second {
-  @apply px-5 py-3 rounded-xl flex justify-center items-center gap-2;
+  @apply px-5 py-[14px] rounded-xl flex justify-center items-center gap-2;
 }
 
 .btn_disabled {
