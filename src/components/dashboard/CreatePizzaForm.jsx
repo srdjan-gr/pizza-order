@@ -10,9 +10,8 @@ const CreatePizzaForm = () => {
   const [ingredients, setIngredients] = useState("");
   const [sizeAndPrice, setSizeAndPrice] = useState([]);
 
+  const [imagePreview, setImagePreview] = useState("");
   const [isCreating, setIsCreating] = useState(false);
-
-  // console.log(sizeAndPrice);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -41,6 +40,7 @@ const CreatePizzaForm = () => {
     if (response) {
       toast.success(`Pizza '${name}' reated.`);
       setIsCreating(false);
+      setImagePreview("");
       setImage("");
       setName("");
       setIngredients("");
@@ -80,6 +80,8 @@ const CreatePizzaForm = () => {
             <ImageUpload
               image={image}
               setImage={setImage}
+              imagePreview={imagePreview}
+              setImagePreview={setImagePreview}
               label={"Pizza Image"}
             />
           </div>

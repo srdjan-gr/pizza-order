@@ -4,31 +4,61 @@ import Spinner from "../utility/Spinner";
 import Image from "next/image";
 import noImage from "../../../public/images/no-image.png";
 
-const ImageUpload = ({ label }) => {
+const ImageUpload = ({
+  label,
+  image,
+  setImage,
+  setImagePreview,
+  imagePreview,
+}) => {
   const [uploadingImage, setUploadingImage] = useState(false);
-  const [image, setImage] = useState("");
+  // const [image, setImage] = useState("");
 
+  // Image upload to AWS
   // Change image with preview
+  // const handleImageChange = async (e) => {
+
+  //   setUploadingImage(true);
+
+  //   const file = e.target.files;
+
+  //   if (file.length === 1) {
+  //     const data = new FormData();
+  //     data.set("file", file[0]);
+
+  //     const response = await fetch("/api/upload", {
+  //       method: "POST",
+  //       body: data,
+  //     });
+
+  //     const imageAwsLink = await response.json();
+
+  //     setImage(imageAwsLink);
+  //     //   console.log(imageAwsLink);
+  //     setUploadingImage(false);
+  //   }
+  // };
+
+  // Local image upload
   const handleImageChange = async (e) => {
-    console.log(image);
-    setUploadingImage(true);
+    const file = e.target.files[0];
+    setImagePreview(URL.createObjectURL(file));
 
-    const file = e.target.files;
+    try {
+      if (file) {
+        const data = new FormData();
+        data.append("file", file);
 
-    if (file.length === 1) {
-      const data = new FormData();
-      data.set("file", file[0]);
+        const response = await fetch("/api/localUpload", {
+          method: "POST",
+          body: data,
+        });
 
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: data,
-      });
-
-      const imageAwsLink = await response.json();
-
-      setImage(imageAwsLink);
-      //   console.log(imageAwsLink);
-      setUploadingImage(false);
+        const newImageName = await response.json();
+        setImage(newImageName);
+      }
+    } catch (error) {
+      console.log(error.response?.data);
     }
   };
 
@@ -40,7 +70,7 @@ const ImageUpload = ({ label }) => {
         </label>
         <Image
           className="rounded-2xl object-contain fill-current mb-2 border-[1px] border-gray-300"
-          src={image ? image : noImage}
+          src={imagePreview ? imagePreview : noImage}
           alt="pizza"
           //   layout="fill"
           // sizes="(max-width: 8rem)"
