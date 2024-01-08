@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Spinner from "../utility/Spinner";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const DashboardCategoryForm = ({ setIsCreatedCategory, IsCreatedCategory }) => {
   const [isCreating, setIsCreating] = useState(false);

@@ -1,21 +1,54 @@
 import React, { useState } from "react";
 import ImageUpload from "./ImageUpload";
 import Spinner from "../utility/Spinner";
+import toast from "react-hot-toast";
 import { IoTrashOutline } from "react-icons/io5";
 
 const CreatePizzaForm = () => {
-  const [pizzaImage, setPizzaImage] = useState("");
+  const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState("");
-  const [size, setSize] = useState("");
-  const [price, setPrice] = useState("");
-  const [isCreating, setIsCreating] = useState(false);
-
   const [sizeAndPrice, setSizeAndPrice] = useState([]);
+
+  const [isCreating, setIsCreating] = useState(false);
 
   // console.log(sizeAndPrice);
 
-  const handleFormSubmit = () => {};
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    setIsCreating(true);
+
+    if (!name || !ingredients || !sizeAndPrice) {
+      toast.error("All fields are required!");
+      setIsCreating(false);
+      return;
+    }
+
+    const data = {
+      image,
+      name,
+      ingredients,
+      sizeAndPrice,
+    };
+
+    const response = await fetch("/api/menu", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (response) {
+      toast.success(`Pizza '${name}' reated.`);
+      setIsCreating(false);
+      setImage("");
+      setName("");
+      setIngredients("");
+      setSizeAndPrice([]);
+    } else {
+      toast.error("Something went wrong!");
+    }
+  };
 
   const addSizeAdnPrice = () => {
     setSizeAndPrice((oldSizeAndPrice) => {
@@ -45,8 +78,8 @@ const CreatePizzaForm = () => {
         <div className="flex items-start justify-center flex-wrap w-full gap-10">
           <div>
             <ImageUpload
-              image={pizzaImage}
-              setImage={setPizzaImage}
+              image={image}
+              setImage={setImage}
               label={"Pizza Image"}
             />
           </div>
@@ -104,7 +137,7 @@ const CreatePizzaForm = () => {
             <label className="label">
               <span className="label-text text-gray-400">Pizza Name</span>
             </label>
-            <div className="border-[1px] border-gray-300 rounded-2xl bg-white p-4">
+            <div className="border-[1px] border-gray-300 rounded-2xl bg-white p-2">
               {sizeAndPrice?.length > 0 &&
                 sizeAndPrice.map((item, idx) => {
                   return (

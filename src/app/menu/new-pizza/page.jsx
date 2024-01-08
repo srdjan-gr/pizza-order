@@ -35,9 +35,9 @@ const Page = () => {
     return <Loading />;
   }
 
-  if (!isAdminProfile) {
-    return <BackToLogin />;
-  }
+  // if (!isAdminProfile) {
+  //   return <BackToLogin />;
+  // }
 
   return (
     <section className="max-w-7xl min-h-screen m-auto pt-5">
