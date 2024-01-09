@@ -9,7 +9,7 @@ import PizzaCard from "@/components/dashboard/PizzaCard";
 import Spinner from "../utility/Spinner";
 
 const CategoryList = () => {
-  const [allCategories, setAllCategories] = useState([]);
+  const [allPizzas, setAllPizzas] = useState([]);
   const [isFetched, setIsFetched] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -18,14 +18,14 @@ const CategoryList = () => {
   const [clickedItem, setClickedItem] = useState("");
 
   useEffect(() => {
-    fetchCategories();
+    fetchItems();
   }, []);
 
-  const fetchCategories = () => {
+  const fetchItems = () => {
     setIsFetched(true);
-    fetch("/api/categories").then((res) => {
-      res.json().then((categories) => {
-        setAllCategories(categories);
+    fetch("/api/menu").then((res) => {
+      res.json().then((items) => {
+        setAllPizzas(items);
         setIsFetched(false);
       });
     });
@@ -94,10 +94,10 @@ const CategoryList = () => {
       </h1>
 
       <div className="grid grid-cols-3 gap-4">
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
+        {allPizzas?.length > 0 &&
+          allPizzas.map((item) => {
+            return <PizzaCard item={item} />;
+          })}
       </div>
     </section>
   );

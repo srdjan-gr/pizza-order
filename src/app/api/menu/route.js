@@ -15,3 +15,9 @@ export async function POST(req) {
 
   return Response.json(createdPizza);
 }
+
+// Get all items
+export async function GET() {
+  mongoose.connect(process.env.MONGO_URL);
+  return Response.json(await Menu.find());
+}
