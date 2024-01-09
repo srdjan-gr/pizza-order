@@ -139,7 +139,7 @@ const CreatePizzaForm = () => {
             <label className="label">
               <span className="label-text text-gray-400">Pizza Name</span>
             </label>
-            <div className="border-[1px] border-gray-300 rounded-2xl bg-white p-2">
+            <div className="border-[1px] border-gray-300 rounded-xl bg-white p-2">
               {sizeAndPrice?.length > 0 &&
                 sizeAndPrice.map((item, idx) => {
                   return (
@@ -202,7 +202,7 @@ const CreatePizzaForm = () => {
                 onClick={addSizeAdnPrice}
                 className="btn_second w-full bg-pizza_orange-200 text-white hover:bg-pizza_orange-100"
               >
-                Add pizza size
+                Add pizza size and price
               </button>
             </div>
           </div>

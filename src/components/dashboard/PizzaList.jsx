@@ -4,7 +4,8 @@ import { HiOutlinePencil, HiOutlineTrash } from "react-icons/hi2";
 import toast, { Toaster } from "react-hot-toast";
 import { confirm } from "react-confirm-box";
 
-import PopupOptions from "../../components/utility/ConfirmBox";
+import PopupOptions from "@/components/utility/ConfirmBox";
+import PizzaCard from "@/components/dashboard/PizzaCard";
 import Spinner from "../utility/Spinner";
 
 const CategoryList = () => {
@@ -91,6 +92,13 @@ const CategoryList = () => {
       <h1 className="mb-5 text-xl text-gray-400 w-full max-w-xs underline">
         Pizza menu
       </h1>
+
+      <div className="grid grid-cols-3 gap-4">
+        <PizzaCard />
+        <PizzaCard />
+        <PizzaCard />
+        <PizzaCard />
+      </div>
     </section>
   );
 };

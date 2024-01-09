@@ -34,9 +34,9 @@ const Page = () => {
   }, [session, sessionStatus]);
 
   // Spiner for page loading
-  if (session.status === "loading" || isLoadingProfile) {
-    return <Loading />;
-  }
+  // if (session.status === "loading" || isLoadingProfile) {
+  //   return <Loading />;
+  // }
 
   if (!isAdminProfile) {
     return <BackToLogin />;

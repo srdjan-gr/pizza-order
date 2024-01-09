@@ -12,7 +12,6 @@ const ImageUpload = ({
   imagePreview,
 }) => {
   const [uploadingImage, setUploadingImage] = useState(false);
-  // const [image, setImage] = useState("");
 
   // Image upload to AWS
   // Change image with preview
@@ -71,7 +70,7 @@ const ImageUpload = ({
         <Image
           className="rounded-2xl object-contain fill-current mb-2 border-[1px] border-gray-300"
           src={imagePreview ? imagePreview : noImage}
-          alt="pizza"
+          alt="pizza preview"
           //   layout="fill"
           // sizes="(max-width: 8rem)"
           width={200}
