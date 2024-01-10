@@ -22,10 +22,11 @@ const MenuSchema = new Schema(
     ingredients: {
       type: String,
       requireed: true,
-      unique: true,
+      // unique: true,
     },
     sizeAndPrice: {
       type: [sizeAndPriceShema],
+      requireed: true,
     },
     published: {
       type: Boolean,

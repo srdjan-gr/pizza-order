@@ -9,11 +9,13 @@ import CreatePizza from "@/components/dashboard/CreatePizza";
 import PizzaList from "@/components/dashboard/PizzaList";
 import Loading from "@/components/utility/Loading";
 import BackToLogin from "@/components/dashboard/BackToLogin";
+import Divider from "@/components/utility/Divider";
 
 const Page = () => {
   const [isAdminProfile, setIsAdminProfile] = useState(false);
   const [isLoadingProfile, setIsLoadingProfile] = useState(false);
-  const [IsCreatedItem, setIsCreatedItem] = useState(false);
+  const [isCreatedItem, setIsCreatedItem] = useState(false);
+  const [isEditedItem, setIsEditedItem] = useState(false);
 
   const session = useSession();
   const sessionStatus = session.status;
@@ -55,10 +57,13 @@ const Page = () => {
         <div className="flex flex-col px-10 w-4/5">
           <CreatePizza />
 
-          <div className="border-b border-gray-300 w-full mt-10 mb-8"></div>
+          <Divider />
 
           {/* Pizza List */}
-          <PizzaList />
+          <PizzaList
+            isEditedItem={isEditedItem}
+            setIsEditedItem={setIsEditedItem}
+          />
         </div>
       </div>
     </section>

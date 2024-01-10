@@ -1,14 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { HiOutlinePencil, HiOutlineTrash } from "react-icons/hi2";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { confirm } from "react-confirm-box";
 
 import PopupOptions from "@/components/utility/ConfirmBox";
 import PizzaCard from "@/components/dashboard/PizzaCard";
-import Spinner from "../utility/Spinner";
 
-const CategoryList = () => {
+const CategoryList = ({ isEditedItem, setIsEditedItem }) => {
   const [allPizzas, setAllPizzas] = useState([]);
   const [isFetched, setIsFetched] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -19,7 +17,7 @@ const CategoryList = () => {
 
   useEffect(() => {
     fetchItems();
-  }, []);
+  }, [isEditedItem]);
 
   const fetchItems = () => {
     setIsFetched(true);
@@ -96,7 +94,13 @@ const CategoryList = () => {
       <div className="grid grid-cols-3 gap-4">
         {allPizzas?.length > 0 &&
           allPizzas.map((item) => {
-            return <PizzaCard item={item} />;
+            return (
+              <PizzaCard
+                item={item}
+                isEditedItem={isEditedItem}
+                setIsEditedItem={setIsEditedItem}
+              />
+            );
           })}
       </div>
     </section>

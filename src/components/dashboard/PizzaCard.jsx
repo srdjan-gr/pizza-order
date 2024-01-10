@@ -1,22 +1,46 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
 import { HiOutlinePencil, HiOutlineTrash } from "react-icons/hi2";
 import { LuEuro } from "react-icons/lu";
+import Divider from "../utility/Divider";
+import toast from "react-hot-toast";
 
-const PizzaCard = ({ item }) => {
+const PizzaCard = ({ item, isEditedItem, setIsEditedItem }) => {
+  const [published, setPublished] = useState(item.published);
+  const [editPublished, setEditPublished] = useState(false);
+
+  const publishPizza = async (id, itmPublished) => {
+    setIsEditedItem(false);
+
+    const data = {
+      _id: id,
+      published: !itmPublished,
+      prop: "editPublished",
+    };
+
+    const response = await fetch("/api/menu", {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (response) {
+      toast.success("Pizza published successfuly.");
+      setIsEditedItem(true);
+    } else {
+      toast.error("Something went wrong!");
+    }
+  };
+
   return (
     <div
       key={item.name}
       className="p-4 border-[1px] border-gray-300 rounded-xl"
     >
-      <div className="flex justify-between items-center mb-4">
-        <div>
-          <label className="text-gray-400 text-xs ">Pizza Name:</label>
-          <h2 className="text-gray-700 font-bold text-lg">{item.name}</h2>
-        </div>
-        <div className="flex items-start justify-end gap-3 border-[1px] border-gray-300 rounded-lg p-2">
-          <HiOutlinePencil className="h-5 w-5 text-gray-400 hover:text-pizza_blue-100 cursor-pointer" />
-          <HiOutlineTrash className="h-5 w-5 text-gray-400 hover:text-pizza_red-200 cursor-pointer" />
-        </div>
+      <div className="flex flex-col items-start mb-4">
+        <label className="text-gray-400 text-xs ">Pizza Name:</label>
+        <h2 className="text-gray-700 font-bold text-lg">{item.name}</h2>
       </div>
 
       <div className="flex justify-between">
@@ -55,6 +79,42 @@ const PizzaCard = ({ item }) => {
                 );
               })}
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex w-full justify-between mt-4">
+        <div className="tooltip tooltip-bottom" data-tip="Publish Pizza">
+          {/* <div className="form-control">
+            <label className="cursor-pointer label">
+              <input
+                type="checkbox"
+                className={`${
+                  published
+                    ? "bg-pizza_green-400 hover:bg-pizza_green-300 border-pizza_green-400"
+                    : "bg-gray-400 hover:bg-ggray-300 border-gray-400"
+                } toggle toggle-sm `}
+                checked={published}
+                onClick={() => publishPizza(item._id)}
+              />
+            </label>
+          </div> */}
+          <button
+            type="button"
+            className={`${
+              published ? " bg-pizza_green-400 text-white" : "bg-gray-200"
+            } border-[1px] p-2 rounded-lg`}
+            onClick={() => publishPizza(item._id, item.published)}
+          >
+            {published ? "Published" : "Publish"}
+          </button>
+        </div>
+        <div className="flex items-start justify-end gap-3 border-[1px] border-gray-300 rounded-lg p-2">
+          <div className="tooltip tooltip-bottom" data-tip="Edit pizza">
+            <HiOutlinePencil className="h-5 w-5 text-gray-400 hover:text-pizza_blue-100 cursor-pointer" />
+          </div>
+          <div className="tooltip tooltip-bottom" data-tip="Delete Pizza">
+            <HiOutlineTrash className="h-5 w-5 text-gray-400 hover:text-pizza_red-200 cursor-pointer" />
           </div>
         </div>
       </div>

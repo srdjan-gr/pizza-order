@@ -8,6 +8,7 @@ import DashboardMenu from "@/components/dashboard/DashboardMenu";
 import DashboardCategoryForm from "@/components/dashboard/DashboardCategoryForm";
 import CategoryList from "@/components/dashboard/CategoryList";
 import Loading from "@/components/utility/Loading";
+import Divider from "@/components/utility/Divider";
 import { sendStatusCode } from "next/dist/server/api-utils";
 import BackToLogin from "@/components/dashboard/BackToLogin";
 
@@ -65,9 +66,7 @@ const Page = () => {
             setIsCreatedCategory={setIsCreatedCategory}
             IsCreatedCategory={IsCreatedCategory}
           />
-
-          <div className="border-b border-gray-300 w-full mt-10 mb-8"></div>
-
+          <Divider />
           <CategoryList
             setIsCreatedCategory={setIsCreatedCategory}
             IsCreatedCategory={IsCreatedCategory}
