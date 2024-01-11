@@ -95,7 +95,7 @@ const DashboardUserList = () => {
   };
 
   return (
-    <section className="w-4/5 px-10">
+    <section className="w-full lg:w-4/5 px-0 lg:px-10">
       <h1 className="mb-5 text-xl text-gray-400 w-full max-w-xs underline">
         Users list
       </h1>
@@ -179,7 +179,7 @@ const DashboardUserList = () => {
 
                       <td className="px-6 py-3">
                         <div className="flex gap-2">
-                          <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600 min-w-32">
+                          <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600 min-w-[110px]">
                             {item.address}
                           </span>
                         </div>
@@ -189,25 +189,24 @@ const DashboardUserList = () => {
 
                       <td className="px-6 py-3">
                         <div className="flex items-center gap-4">
-                          {/* Delete btn */}
-                          <div
-                            x-data="{ tooltip: 'Delete' }"
-                            href="#"
-                            onClick={() => handleUserDelete(item)}
-                          >
-                            <HiOutlineTrash className="w-5 h-5 text-gray-400 hover:text-gray-500 cursor-pointer" />
-                          </div>
-
                           {/* Update btn */}
                           <div
-                            x-data="{ tooltip: 'Edit' }"
-                            href="#"
+                            data-tip="Edit user"
+                            className="tooltip tooltip-bottom"
                             onClick={() => {
                               setClickedItem(item._id);
                               openEditForm(item);
                             }}
                           >
-                            <HiOutlinePencil className="w-5 h-5 text-gray-400 hover:text-gray-500 cursor-pointer" />
+                            <HiOutlinePencil className="w-5 h-5 text-gray-400 hover:text-pizza_blue-100 cursor-pointer" />
+                          </div>
+                          {/* Delete btn */}
+                          <div
+                            data-tip="Delete user"
+                            className="tooltip tooltip-bottom"
+                            onClick={() => handleUserDelete(item)}
+                          >
+                            <HiOutlineTrash className="w-5 h-5 text-gray-400 hover:text-pizza_red-200 cursor-pointer" />
                           </div>
                         </div>
                       </td>

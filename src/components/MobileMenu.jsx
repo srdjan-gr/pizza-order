@@ -119,6 +119,7 @@ const MobileMenu = ({ mobile, setMobile, isAdminProfile }) => {
               dashboardMenuLinksAdmin.map((item) => {
                 return (
                   <Link
+                    key={item.title}
                     href={item.href}
                     onClick={handleMobileMenu}
                     className="flex items-center justify-between text-xl px-3  cursor-pointer w-2/3 mb-3 m-auto text-gray-400"
@@ -133,6 +134,7 @@ const MobileMenu = ({ mobile, setMobile, isAdminProfile }) => {
               dashboardMenuLinksUser.map((item) => {
                 return (
                   <Link
+                    key={item.title}
                     href={item.href}
                     onClick={handleMobileMenu}
                     className="flex items-center justify-between text-xl px-3  cursor-pointer w-2/3 mb-3 m-auto text-gray-400"
