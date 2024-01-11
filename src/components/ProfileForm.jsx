@@ -1,13 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { signIn } from "next-auth/react";
 import { useSession } from "next-auth/react";
-
 import Image from "next/image";
-import Link from "next/link";
-import toast, { Toaster } from "react-hot-toast";
-
+import toast from "react-hot-toast";
 import Spinner from "./utility/Spinner";
 
 const ProfileForm = () => {
@@ -104,9 +100,9 @@ const ProfileForm = () => {
   };
 
   return (
-    <section className=" m-auto overflow">
+    <section className="m-auto">
       <form
-        className="w-full m-auto flex flex-col justify-start items-center"
+        className="w-full  m-auto flex flex-col justify-start items-center"
         onSubmit={handleProfileInfoUpdate}
       >
         <div className="flex flex-col md:flex-row justify-start items-start gap-6">
@@ -191,7 +187,7 @@ const ProfileForm = () => {
             </div>
 
             {/* Phone number */}
-            <div className="form-control w-full max-w-xs mb-3 relative">
+            <div className="form-control w-full max-w-xs mb-0 md:mb-3 relative">
               <label className="label">
                 <span className="label-text text-gray-400">Phone number</span>
               </label>
