@@ -161,25 +161,24 @@ const CategoryList = ({ setIsCreatedCategory, IsCreatedCategory }) => {
 
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-4">
-                          {/* Delete btn */}
-                          <div
-                            x-data="{ tooltip: 'Delete' }"
-                            href="#"
-                            onClick={() => handleCaregoryDelete(item)}
-                          >
-                            <HiOutlineTrash className="w-5 h-5 text-gray-400 hover:text-gray-500 cursor-pointer" />
-                          </div>
-
                           {/* Update btn */}
                           <div
-                            x-data="{ tooltip: 'Edit' }"
-                            href="#"
+                            className="tooltip tooltip-bottom"
+                            data-tip="Edit Category"
                             onClick={() => {
                               setClickedItem(item._id);
                               openEditForm(item);
                             }}
                           >
-                            <HiOutlinePencil className="w-5 h-5 text-gray-400 hover:text-gray-500 cursor-pointer" />
+                            <HiOutlinePencil className="w-5 h-5 text-gray-400 hover:text-pizza_blue-100 cursor-pointer" />
+                          </div>
+                          {/* Delete btn */}
+                          <div
+                            className="tooltip tooltip-bottom"
+                            data-tip="Delete Category"
+                            onClick={() => handleCaregoryDelete(item)}
+                          >
+                            <HiOutlineTrash className="w-5 h-5 text-gray-400 hover:text-pizza_red-200 cursor-pointer" />
                           </div>
                         </div>
                       </td>

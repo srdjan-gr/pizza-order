@@ -2,6 +2,17 @@
 
 const PopupOptions = {
   render: (message, onConfirm, onCancel) => {
+    const options = {
+      closeOnEscape: true,
+      closeOnClickOutside: true,
+      keyCodeForClose: [8, 32],
+      willUnmount: () => {},
+      afterClose: () => {},
+      onClickOutside: () => {},
+      onKeypress: () => {},
+      onKeypressEscape: () => {},
+      overlayClassName: "overlay-custom-class-name",
+    };
     return (
       <article className=" bg-white p-6 shadow-md rounded-xl -translate-x-1/3 -translate-y-1/3">
         <p className="text-lg"> {message} </p>

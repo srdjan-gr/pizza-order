@@ -61,30 +61,6 @@ const CategoryList = ({ isEditedItem, setIsEditedItem }) => {
     }
   };
 
-  // Delete pizza
-  const handleCaregoryDelete = async (item) => {
-    const resoult = await confirm(
-      `Are you sure you wan to delete category '${item.name}'?`,
-      PopupOptions
-    );
-
-    if (resoult) {
-      const response = await fetch("/api/categories", {
-        method: "DELETE",
-        body: JSON.stringify({ _id: item._id }),
-        headers: { "Content-Type": "application/json" },
-      });
-
-      if (response) {
-        toast.success(`Category '${item.name}' deleted successfuly.`);
-        setHandleEdit(!handleEdit);
-        fetchCategories();
-      } else {
-        toast.error("Something went wrong!");
-      }
-    }
-  };
-
   return (
     <section className="">
       <h1 className="mb-5 text-xl text-gray-400 w-full max-w-xs underline">
@@ -99,6 +75,7 @@ const CategoryList = ({ isEditedItem, setIsEditedItem }) => {
                 item={item}
                 isEditedItem={isEditedItem}
                 setIsEditedItem={setIsEditedItem}
+                fetchItems={fetchItems}
               />
             );
           })}

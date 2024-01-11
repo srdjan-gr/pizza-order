@@ -5,8 +5,10 @@ import { HiOutlinePencil, HiOutlineTrash } from "react-icons/hi2";
 import { LuEuro } from "react-icons/lu";
 import Divider from "../utility/Divider";
 import toast from "react-hot-toast";
+import { confirm } from "react-confirm-box";
+import PopupOptions from "../../components/utility/ConfirmBox";
 
-const PizzaCard = ({ item, isEditedItem, setIsEditedItem }) => {
+const PizzaCard = ({ item, isEditedItem, setIsEditedItem, fetchItems }) => {
   const [published, setPublished] = useState(item.published);
   const [editPublished, setEditPublished] = useState(false);
 
@@ -26,10 +28,34 @@ const PizzaCard = ({ item, isEditedItem, setIsEditedItem }) => {
     });
 
     if (response) {
-      toast.success("Pizza published successfuly.");
-      setIsEditedItem(true);
+      toast.success("Pizza 'published' state changed successfuly.");
+      // setIsEditedItem(true);
+      fetchItems();
     } else {
       toast.error("Something went wrong!");
+    }
+  };
+
+  // Delete pizza
+  const handleItemDelete = async (item) => {
+    const resoult = await confirm(
+      `Are you sure you wan to delete pizza '${item.name}'?`,
+      PopupOptions
+    );
+
+    if (resoult) {
+      const response = await fetch("/api/menu", {
+        method: "DELETE",
+        body: JSON.stringify({ _id: item._id }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (response) {
+        toast.success(`Pizza '${item.name}' deleted successfuly.`);
+        fetchItems();
+      } else {
+        toast.error("Something went wrong!");
+      }
     }
   };
 
@@ -114,7 +140,10 @@ const PizzaCard = ({ item, isEditedItem, setIsEditedItem }) => {
             <HiOutlinePencil className="h-5 w-5 text-gray-400 hover:text-pizza_blue-100 cursor-pointer" />
           </div>
           <div className="tooltip tooltip-bottom" data-tip="Delete Pizza">
-            <HiOutlineTrash className="h-5 w-5 text-gray-400 hover:text-pizza_red-200 cursor-pointer" />
+            <HiOutlineTrash
+              onClick={() => handleItemDelete(item)}
+              className="h-5 w-5 text-gray-400 hover:text-pizza_red-200 cursor-pointer"
+            />
           </div>
         </div>
       </div>
