@@ -35,8 +35,8 @@ const DashboardCategoryForm = ({ setIsCreatedCategory, IsCreatedCategory }) => {
   };
 
   return (
-    <section className=" ">
-      <h1 className="mb-5 text-xl text-gray-400 w-full max-w-xs underline">
+    <section className="w-full">
+      <h1 className="mb-5 text-xl text-gray-400 w-full underline">
         Add category
       </h1>
 
@@ -65,7 +65,7 @@ const DashboardCategoryForm = ({ setIsCreatedCategory, IsCreatedCategory }) => {
             isCreating
               ? "bg-gray-300"
               : "bg-pizza_green-500 border-0 hover:bg-pizza_green-400"
-          } btn_second  text-white max-w-xs relative rounded-full`}
+          } btn_second  text-white relative rounded-full w-full md:w-[160px]`}
           disabled={isCreating}
         >
           Create category
