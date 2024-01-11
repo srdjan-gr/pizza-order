@@ -15,7 +15,6 @@ const Page = () => {
   const [isAdminProfile, setIsAdminProfile] = useState(false);
   const [isLoadingProfile, setIsLoadingProfile] = useState(false);
   const [isCreatedItem, setIsCreatedItem] = useState(false);
-  const [isEditedItem, setIsEditedItem] = useState(false);
 
   const session = useSession();
   const sessionStatus = session.status;
@@ -45,8 +44,8 @@ const Page = () => {
   }
 
   return (
-    <section className="max-w-7xl min-h-screen m-auto pt-5">
-      <h1 className="text-xl text-gray-400 w-full max-w-xs underline mt-5 mb-10">
+    <section className="max-w-7xl min-h-screen m-auto py-5">
+      <h1 className="text-xl text-gray-400 w-full max-w-xs underline mb-10 px-5 lg:px-0">
         Pizzas Menu
       </h1>
 
@@ -54,16 +53,13 @@ const Page = () => {
         {/* left Navigation */}
         <DashboardMenu />
 
-        <div className="flex flex-col px-10 w-4/5">
+        <div className="flex flex-col px-5 lg:px-10 w-full lg:w-4/5">
           <CreatePizza />
 
           <Divider />
 
           {/* Pizza List */}
-          <PizzaList
-            isEditedItem={isEditedItem}
-            setIsEditedItem={setIsEditedItem}
-          />
+          <PizzaList />
         </div>
       </div>
     </section>

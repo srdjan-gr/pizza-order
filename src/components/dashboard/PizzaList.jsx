@@ -5,11 +5,14 @@ import { confirm } from "react-confirm-box";
 
 import PopupOptions from "@/components/utility/ConfirmBox";
 import PizzaCard from "@/components/dashboard/PizzaCard";
+import Search from "@/components/Search";
 
-const CategoryList = ({ isEditedItem, setIsEditedItem }) => {
+const CategoryList = () => {
   const [allPizzas, setAllPizzas] = useState([]);
+  const [searchResault, setSearchResault] = useState([]);
   const [isFetched, setIsFetched] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [isEditedItem, setIsEditedItem] = useState(false);
 
   const [handleEdit, setHandleEdit] = useState(false);
   const [editingItemValue, setEditingItemValue] = useState("");
@@ -24,6 +27,7 @@ const CategoryList = ({ isEditedItem, setIsEditedItem }) => {
     fetch("/api/menu").then((res) => {
       res.json().then((items) => {
         setAllPizzas(items);
+        setSearchResault(items);
         setIsFetched(false);
       });
     });
@@ -62,23 +66,25 @@ const CategoryList = ({ isEditedItem, setIsEditedItem }) => {
   };
 
   return (
-    <section className="">
-      <h1 className="mb-5 text-xl text-gray-400 w-full max-w-xs underline">
-        Pizza menu
-      </h1>
+    <section>
+      <div className="flex flex-col md:flex-row justify-between items-start w-full">
+        <h1 className="mb-5 text-xl text-gray-400 underline">Menu</h1>
 
-      <div className="grid grid-cols-3 gap-4">
-        {allPizzas?.length > 0 &&
-          allPizzas.map((item) => {
-            return (
-              <PizzaCard
-                item={item}
-                isEditedItem={isEditedItem}
-                setIsEditedItem={setIsEditedItem}
-                fetchItems={fetchItems}
-              />
-            );
-          })}
+        <Search searchData={allPizzas} setSearchResault={setSearchResault} />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10 mb-5">
+        {searchResault.map((item) => {
+          return (
+            <PizzaCard
+              key={item.name}
+              item={item}
+              isEditedItem={isEditedItem}
+              setIsEditedItem={setIsEditedItem}
+              fetchItems={fetchItems}
+            />
+          );
+        })}
       </div>
     </section>
   );

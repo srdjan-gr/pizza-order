@@ -29,7 +29,7 @@ const PizzaCard = ({ item, isEditedItem, setIsEditedItem, fetchItems }) => {
 
     if (response) {
       toast.success("Pizza 'published' state changed successfuly.");
-      // setIsEditedItem(true);
+      setIsEditedItem(true);
       fetchItems();
     } else {
       toast.error("Something went wrong!");
@@ -60,24 +60,23 @@ const PizzaCard = ({ item, isEditedItem, setIsEditedItem, fetchItems }) => {
   };
 
   return (
-    <div
-      key={item.name}
-      className="p-4 border-[1px] border-gray-300 rounded-xl"
-    >
+    <div className="p-4 border-[1px] border-gray-300 rounded-xl">
       <div className="flex flex-col items-start mb-4">
         <label className="text-gray-400 text-xs ">Pizza Name:</label>
         <h2 className="text-gray-700 font-bold text-lg">{item.name}</h2>
       </div>
 
       <div className="flex justify-between">
-        <Image
-          src={`/pizzaImages/${item.image}`}
-          width={120}
-          height={120}
-          alt={item.name}
-          className="rounded-xl"
-        />
-        <div className="flex justify-between w-full ms-5">
+        <div className="w-[120px] h-[120px]  flex justify-center items-center rounded-xl">
+          <Image
+            src={`/pizzaImages/${item.image}`}
+            width={120}
+            height={120}
+            alt={item.name}
+            className="rounded-xl"
+          />
+        </div>
+        <div className="flex justify-between w-1/2">
           <div className="w-2/3 flex flex-col justify-start">
             <label className="text-gray-400 text-xs mb-2">Size:</label>
             {item.sizeAndPrice.map((size) => {
@@ -109,9 +108,10 @@ const PizzaCard = ({ item, isEditedItem, setIsEditedItem, fetchItems }) => {
         </div>
       </div>
 
-      <div className="flex w-full justify-between mt-4">
+      <div className="flex w-full items-center justify-between mt-6 bg-slate-100">
         <div className="tooltip tooltip-bottom" data-tip="Publish Pizza">
-          {/* <div className="form-control">
+          <div className="form-control">
+            <label className="text-gray-400 text-xs ">Published:</label>
             <label className="cursor-pointer label">
               <input
                 type="checkbox"
@@ -120,22 +120,13 @@ const PizzaCard = ({ item, isEditedItem, setIsEditedItem, fetchItems }) => {
                     ? "bg-pizza_green-400 hover:bg-pizza_green-300 border-pizza_green-400"
                     : "bg-gray-400 hover:bg-ggray-300 border-gray-400"
                 } toggle toggle-sm `}
-                checked={published}
-                onClick={() => publishPizza(item._id)}
+                defaultChecked={published}
+                onClick={() => publishPizza(item._id, item.published)}
               />
             </label>
-          </div> */}
-          <button
-            type="button"
-            className={`${
-              published ? " bg-pizza_green-400 text-white" : "bg-gray-200"
-            } border-[1px] p-2 rounded-lg`}
-            onClick={() => publishPizza(item._id, item.published)}
-          >
-            {published ? "Published" : "Publish"}
-          </button>
+          </div>
         </div>
-        <div className="flex items-start justify-end gap-3 border-[1px] border-gray-300 rounded-lg p-2">
+        <div className="flex items-center justify-end gap-3 border-[1px] border-gray-300 rounded-lg p-3 h-10">
           <div className="tooltip tooltip-bottom" data-tip="Edit pizza">
             <HiOutlinePencil className="h-5 w-5 text-gray-400 hover:text-pizza_blue-100 cursor-pointer" />
           </div>

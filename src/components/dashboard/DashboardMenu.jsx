@@ -112,7 +112,7 @@ const DashboardMenu = () => {
 
   if (isAdminProfile) {
     return (
-      <nav className="flex flex-col items-start w-1/5 ">
+      <nav className="hidden lg:flex lg:flex-col items-start w-1/5 ">
         <div className="flex flex-col items-start py-5 ps-2 pe-10 w-full border-r border-gray-300 ">
           {dashboardMenuLinksAdmin.map((item) => (
             <Link
