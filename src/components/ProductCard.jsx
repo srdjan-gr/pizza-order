@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const ProductCard = () => {
   return (
-    <article className="bg-white rounded-3xl shadow-xl w-[300px] pb-1 transition-transform hover:-translate-y-1 z-0">
+    <article className="bg-white rounded-3xl shadow-xl max-w-[300px] pb-1 transition-transform hover:-translate-y-1 z-0 my-10 ">
       <Image
         width={300}
         height={300}

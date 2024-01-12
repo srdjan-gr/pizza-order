@@ -5,7 +5,7 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 
 const Hero = () => {
   return (
-    <section className="w-full max-w-[1440px] m-auto">
+    <section className="w-full max-w-[1440px] m-auto mb-5">
       <div className="m-auto flex justify-between h-[740px] bg-gradient-to-r from-pizza_green-300/10 to-pizza_orange-400/10 rounded-3xl">
         <div className="w-1/2 ps-20 flex flex-col justify-center">
           <h1 className="text-7xl font-bold leading-[1.2] text-pizza_dark">
