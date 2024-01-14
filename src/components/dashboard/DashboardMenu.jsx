@@ -43,7 +43,7 @@ const DashboardMenu = () => {
     },
     {
       title: "Pizza Menu",
-      href: "/menu",
+      href: "/dash-menu",
       icon: <HiOutlineDocumentText className="ml-3 h-6 w-6" />,
     },
     {
@@ -53,7 +53,7 @@ const DashboardMenu = () => {
     },
     {
       title: "User Profile",
-      href: "/userProfile",
+      href: "/user-profile",
       icon: <LiaUserCogSolid className="ml-3 h-6 w-6" />,
     },
   ];
@@ -66,7 +66,7 @@ const DashboardMenu = () => {
     },
     {
       title: "User Profile",
-      href: "/userProfile",
+      href: "/user-profile",
       icon: <LiaUserCogSolid className="ml-3 h-6 w-6" />,
     },
   ];
