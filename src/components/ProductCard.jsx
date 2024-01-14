@@ -4,19 +4,21 @@ import { MdEuroSymbol } from "react-icons/md";
 import { IoReaderOutline } from "react-icons/io5";
 import Link from "next/link";
 
-const ProductCard = () => {
+const ProductCard = ({ pizza }) => {
+  console.log(pizza);
   return (
     <article className="bg-white rounded-3xl shadow-xl max-w-[300px] pb-1 transition-transform hover:-translate-y-1 z-0 my-10 ">
       <Image
         width={300}
         height={300}
         src={PizzaImage}
-        alt="pizza image"
+        // alt={item.name}
+        alt="image"
         className="rounded-tl-3xl rounded-tr-3xl"
       />
 
       <div className="m-4 my-5 text-pizza_black">
-        <h2 className="text-xl mb-5">Pizza Margarita</h2>
+        <h2 className="text-xl mb-5">me</h2>
 
         <div className="flex justify-between items-center mb-8">
           <div className="flex flex-col justify-start">
@@ -26,7 +28,7 @@ const ProductCard = () => {
           <div className="flex flex-col justify-start">
             <p className="text-gray-300">Price from:</p>
             <h3 className="flex justify-start items-center text-xl">
-              15{" "}
+              15
               <MdEuroSymbol className="text-gray-300 text-xl m-0 p-0 mt-[2px] ms-1" />
             </h3>
           </div>
