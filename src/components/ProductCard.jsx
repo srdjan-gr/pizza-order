@@ -4,33 +4,47 @@ import { MdEuroSymbol } from "react-icons/md";
 import { IoReaderOutline } from "react-icons/io5";
 import Link from "next/link";
 
-const ProductCard = ({ pizza }) => {
-  console.log(pizza);
+const ProductCard = ({ item }) => {
   return (
-    <article className="bg-white rounded-3xl shadow-xl max-w-[300px] pb-1 transition-transform hover:-translate-y-1 z-0 my-10 ">
+    <article
+      key={item.name}
+      className="bg-white rounded-2xl shadow-xl max-w-[280px] pb-1 transition-all hover:-translate-y-2 z-0 border-[4px] border-white hover:border-pizza_green-50/20"
+    >
       <Image
-        width={300}
-        height={300}
-        src={PizzaImage}
-        // alt={item.name}
-        alt="image"
-        className="rounded-tl-3xl rounded-tr-3xl"
+        width={280}
+        height={280}
+        src={`/pizzaImages/${item.image}`}
+        alt={item.name}
+        className="rounded-tl-3xl rounded-tr-3xl p-3 pb-0"
       />
 
-      <div className="m-4 my-5 text-pizza_black">
-        <h2 className="text-xl mb-5">me</h2>
+      <div className="p-3 text-pizza_black">
+        <h2 className="text-xl mb-3 font-bold">Pizza {item.name}</h2>
 
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex justify-between items-center mb-4">
           <div className="flex flex-col justify-start">
-            <p className="text-gray-300">Sizes:</p>
-            <h3 className="text-xl">M, L, XL</h3>
+            <p className="text-gray-300">Avilable Sizes:</p>
+            {item.sizeAndPrice.map((size) => {
+              return (
+                <h3 key={size.size} className="text-sm font-semibold mb-2">
+                  {size.size}
+                </h3>
+              );
+            })}
           </div>
           <div className="flex flex-col justify-start">
-            <p className="text-gray-300">Price from:</p>
-            <h3 className="flex justify-start items-center text-xl">
-              15
-              <MdEuroSymbol className="text-gray-300 text-xl m-0 p-0 mt-[2px] ms-1" />
-            </h3>
+            <p className="text-gray-300">Price:</p>
+            {item.sizeAndPrice.map((price) => {
+              return (
+                <div
+                  key={price.price}
+                  className="flex items-center justify-start mb-1"
+                >
+                  <MdEuroSymbol className="text-gray-300 text-md m-0 p-0 mt-[2px] me-1" />
+                  <h3 className="font-semibold text-[18px]">{price.price}</h3>
+                </div>
+              );
+            })}
           </div>
         </div>
 
