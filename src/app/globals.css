@@ -46,6 +46,9 @@ input[type="text"]:disabled {
   @apply border-gray-200;
 }
 
+.transparent_border {
+  border: 4px solid transparent;
+}
 /* ------------------------------------------------------ */
 /* Spinner */
 .spinner {
