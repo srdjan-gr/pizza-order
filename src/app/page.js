@@ -3,6 +3,7 @@ import BestSellers from "@/components/BestSellers";
 import OurStyle from "@/components/OurStyle";
 import Menu from "@/components/Menu";
 import Location from "@/components/Location";
+import WorkingHours from "@/components/WorkingHours";
 
 export const metadata = {
   title: "Perfect Pizza",
@@ -19,6 +20,7 @@ const page = () => {
         <BestSellers />
         <OurStyle />
         <Menu />
+        <WorkingHours />
         <Location />
       </main>
 
