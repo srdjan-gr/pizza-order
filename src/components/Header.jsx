@@ -3,31 +3,17 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 
 import logo from "../../public/images/logo.png";
-
 import { RiMenuFoldLine } from "react-icons/ri";
-import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { IoIosArrowDown } from "react-icons/io";
 import MobileMenu from "./MobileMenu";
 import UserMenu from "./UserMenu";
-import { usePathname } from "next/navigation";
+import { navLinks } from "@/app/applicationData";
 
 const Header = () => {
-  const navLinks = [
-    { title: "Home", href: "/" },
-    { title: "Menu", href: "/menu" },
-    { title: "Contact", href: "/contact" },
-    { title: "About", href: "/about" },
-    {
-      title: (
-        <HiOutlineShoppingCart className="w-6 h-6 cursor-pointer link_hover " />
-      ),
-      href: "/cart",
-    },
-  ];
-
   const [isAdminProfile, setIsAdminProfile] = useState(false);
   const [isLoadingProfile, setIsLoadingProfile] = useState(false);
   const [mobile, setMobile] = useState(false);

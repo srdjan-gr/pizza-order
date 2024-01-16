@@ -1,20 +1,13 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 import {
-  HiOutlineCog6Tooth,
-  HiOutlineUsers,
-  HiOutlineDocumentText,
-  HiOutlineSquares2X2,
-} from "react-icons/hi2";
-import {
-  LiaUserCogSolid,
-  LiaUserFriendsSolid,
-  LiaCartPlusSolid,
-} from "react-icons/lia";
+  dashboardMenuLinksAdmin,
+  dashboardMenuLinksUser,
+} from "@/app/applicationData";
 
 const DashboardMenu = () => {
   const [isAdminProfile, setIsAdminProfile] = useState(false);
@@ -24,52 +17,6 @@ const DashboardMenu = () => {
 
   const session = useSession();
   const sessionStatus = session.status;
-
-  const dashboardMenuLinksAdmin = [
-    {
-      title: "Dashboard",
-      href: "/dashboard",
-      icon: <HiOutlineCog6Tooth className="ml-3 h-6 w-6" />,
-    },
-    {
-      title: "Orders",
-      href: "/orders",
-      icon: <LiaCartPlusSolid className="ml-3 h-6 w-6" />,
-    },
-    {
-      title: "Categories",
-      href: "/categories",
-      icon: <HiOutlineSquares2X2 className="ml-3 h-6 w-6" />,
-    },
-    {
-      title: "Pizza Menu",
-      href: "/dash-menu",
-      icon: <HiOutlineDocumentText className="ml-3 h-6 w-6" />,
-    },
-    {
-      title: "Users",
-      href: "/users",
-      icon: <LiaUserFriendsSolid className="ml-3 h-6 w-6" />,
-    },
-    {
-      title: "User Profile",
-      href: "/user-profile",
-      icon: <LiaUserCogSolid className="ml-3 h-6 w-6" />,
-    },
-  ];
-
-  const dashboardMenuLinksUser = [
-    {
-      title: "Orders",
-      href: "/orders",
-      icon: <LiaCartPlusSolid className="ml-3 h-6 w-6" />,
-    },
-    {
-      title: "User Profile",
-      href: "/user-profile",
-      icon: <LiaUserCogSolid className="ml-3 h-6 w-6" />,
-    },
-  ];
 
   useEffect(() => {
     setIsLoadingProfile(true);
