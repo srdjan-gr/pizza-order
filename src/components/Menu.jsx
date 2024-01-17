@@ -24,7 +24,7 @@ const Menu = () => {
 
   return (
     <section className="max-w-[1440px] m-auto rounded-3xl relative bg-gradient-to-r from-pizza_green-300/10 to-pizza_orange-400/10 mb-5">
-      <div className="max-w-5xl m-auto py-16 flex flex-col items-center justify-between ">
+      <div className="max-w-6xl m-auto py-16 flex flex-col items-center justify-between ">
         <h2 className="text-4xl font-ibm mb-2">Menu</h2>
 
         <p className="text-lg mb-14 ">
@@ -36,8 +36,8 @@ const Menu = () => {
             Loading...
           </p>
         ) : (
-          <div className="grid grid-col-1 md:grid-cols-3 md:gap-20">
-            {data.slice(0, 6).map((item) => {
+          <div className="grid grid-col-1 md:grid-cols-3 gap-4 md:gap-24">
+            {data?.slice(0, 6).map((item) => {
               return <ProductCard item={item} />;
             })}
           </div>

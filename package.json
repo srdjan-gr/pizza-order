@@ -11,6 +11,7 @@
   "dependencies": {
     "@auth/mongodb-adapter": "^2.0.4",
     "@aws-sdk/client-s3": "^3.454.0",
+    "@vis.gl/react-google-maps": "^0.4.3",
     "bcrypt": "^5.1.1",
     "mongodb": "^6.3.0",
     "mongoose": "^8.0.1",

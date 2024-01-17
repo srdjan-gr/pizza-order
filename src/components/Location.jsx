@@ -1,4 +1,5 @@
 import location from "../../public/images/pizza-location-bg-desktop.jpg";
+import Map from "@/components/Map";
 
 const Location = () => {
   return (
@@ -14,6 +15,10 @@ const Location = () => {
         <p className="text-lg mb-14 ">
           You can visit us and check all our pizza{"’"}s.
         </p>
+      </div>
+
+      <div className="absolute top-40 right-48 z-10">
+        <Map />
       </div>
     </section>
   );

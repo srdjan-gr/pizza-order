@@ -13,7 +13,7 @@ const WorkingHours = () => {
         <h2 className="text-4xl font-ibm mb-2">Working hours</h2>
 
         <p className="text-lg mb-14 ">
-          Our working hours for online order or visit.
+          Our working hours for online orders or visit.
         </p>
       </div>
 
