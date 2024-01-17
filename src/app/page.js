@@ -4,6 +4,7 @@ import OurStyle from "@/components/OurStyle";
 import Menu from "@/components/Menu";
 import Location from "@/components/Location";
 import WorkingHours from "@/components/WorkingHours";
+import Modal from "@/components/utility/Modal";
 
 export const metadata = {
   title: "Perfect Pizza",

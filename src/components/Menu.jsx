@@ -38,7 +38,7 @@ const Menu = () => {
         ) : (
           <div className="grid grid-col-1 md:grid-cols-3 gap-4 md:gap-24">
             {data?.slice(0, 6).map((item) => {
-              return <ProductCard item={item} />;
+              return <ProductCard item={item} key={item.name} />;
             })}
           </div>
         )}

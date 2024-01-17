@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ProductCard from "@/components/ProductCard";
-import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
+
 import { MdEuroSymbol } from "react-icons/md";
 import { IoReaderOutline } from "react-icons/io5";
 import Slider from "react-slick";
@@ -12,10 +12,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import getRandomProducts from "@/components/utility/getRandomProducts";
+import Modal from "./utility/Modal";
 
 const BestSellers = () => {
   const [randomData, setRandomData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [modalItem, setModalItem] = useState({});
 
   useEffect(() => {
     fetchMenuData();
@@ -29,6 +32,11 @@ const BestSellers = () => {
         setIsLoading(false);
       });
     });
+  };
+
+  const openModal = (item) => {
+    setModal(true);
+    setModalItem(item);
   };
 
   const settings = {
@@ -49,28 +57,30 @@ const BestSellers = () => {
   };
 
   return (
-    <section className="w-full max-w-[1440px] m-auto py-10 mb-8 flex flex-col items-center justify-between">
-      <h2 className="text-4xl font-ibm mb-2">Best Sellers</h2>
+    <>
+      <section className="w-full max-w-[1440px] m-auto py-10 mb-8 flex flex-col items-center justify-between">
+        <h2 className="text-4xl font-ibm mb-2">Best Sellers</h2>
 
-      <p className="text-lg mb-8 ">
-        Discover perfect <span className="text-orange-500">pizza</span> best
-        sellers.
-      </p>
+        <p className="text-lg mb-8 ">
+          Discover perfect <span className="text-orange-500">pizza</span> best
+          sellers.
+        </p>
 
-      <div className="w-full bg-transparent">
-        {isLoading ? (
-          <p className="w-full text-center text-lg text-pizza_dark">
-            Loading...
-          </p>
-        ) : (
-          <Slider {...settings}>
-            {randomData?.map((item) => {
-              return (
-                item.published && (
-                  <Link href={"/product"}>
+        <div className="w-full bg-transparent">
+          {isLoading ? (
+            <p className="w-full text-center text-lg text-pizza_dark">
+              Loading...
+            </p>
+          ) : (
+            <Slider {...settings}>
+              {randomData?.map((item) => {
+                return (
+                  item.published && (
                     <article
+                      type="button"
+                      onClick={() => openModal(item)}
                       key={item.name}
-                      className="transition-transform linear hover:-translate-y-2  transparent_border hover:border-pizza_green-50/20 rounded-2xl linea ms-0 md:ms-[60px] max-w-[280px] my-10"
+                      className="transition-transform linear hover:-translate-y-2  transparent_border hover:border-pizza_green-50/20 rounded-2xl linea ms-0 md:ms-[60px] max-w-[280px] my-10 cursor-pointer"
                     >
                       <div className="bg-white rounded-2xl max-w-[280px] pb-1 shadow-xl p-4">
                         <Image
@@ -95,7 +105,7 @@ const BestSellers = () => {
                                 return (
                                   <h3
                                     key={size.size}
-                                    className="text-sm font-semibold mb-2"
+                                    className="text-sm font-semibold mb-2 text-start"
                                   >
                                     {size.size}
                                   </h3>
@@ -135,19 +145,25 @@ const BestSellers = () => {
                         </div>
                       </div>
                     </article>
-                  </Link>
-                )
-              );
-            })}
-          </Slider>
-        )}
-      </div>
+                  )
+                );
+              })}
+            </Slider>
+          )}
+        </div>
 
-      {/* <div className="flex items-center mt-12 gap-10">
+        {/* <div className="flex items-center mt-12 gap-10">
         <IoIosArrowDropleft className="w-10 h-10 text-gray-300 cursor-pointer hover:text-gray" />
         <IoIosArrowDropright className="w-10 h-10 text-gray-300 cursor-pointer hover:text-gray" />
       </div> */}
-    </section>
+      </section>
+      <Modal
+        modal={modal}
+        setModal={setModal}
+        label={"singleProduct"}
+        data={modalItem}
+      />
+    </>
   );
 };
 

@@ -3,13 +3,24 @@ import PizzaImage from "../../public/images/wood-plate-margarita.png";
 import { MdEuroSymbol } from "react-icons/md";
 import { IoReaderOutline } from "react-icons/io5";
 import Link from "next/link";
+import { useState } from "react";
+import Modal from "./utility/Modal";
 
 const ProductCard = ({ item }) => {
+  const [modal, setModal] = useState(false);
+  const [modalItem, setModalItem] = useState({});
+
+  const openModal = (item) => {
+    setModal(true);
+    setModalItem(item);
+  };
+
   return (
-    <Link href={"/product"}>
+    <>
       <article
         key={item.name}
         className="transparent_border hover:border-pizza_green-50/20 rounded-2xl hover:-translate-y-2 transition-all linear cursor-pointer"
+        onClick={() => openModal(item)}
       >
         <div className="bg-white rounded-2xl max-w-[280px] pb-1 shadow-xl h-full p-4">
           <Image
@@ -67,7 +78,13 @@ const ProductCard = ({ item }) => {
           </div>
         </div>
       </article>
-    </Link>
+      <Modal
+        modal={modal}
+        setModal={setModal}
+        label={"singleProduct"}
+        data={modalItem}
+      />
+    </>
   );
 };
 
