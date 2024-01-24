@@ -36,27 +36,27 @@ const Menu = () => {
   };
 
   return (
-    <section className="max-w-[1440px] m-auto rounded-3xl relative bg-gradient-to-r from-pizza_green-300/10 to-pizza_orange-400/10 mb-5">
-      <div className="max-w-6xl m-auto py-16 flex flex-col items-center justify-between ">
-        <h2 className="text-4xl font-ibm mb-2">Menu</h2>
+    <>
+      <section className="max-w-[1440px] m-auto rounded-3xl relative bg-gradient-to-r from-pizza_green-300/10 to-pizza_orange-400/10 mb-5">
+        <div className="max-w-6xl m-auto py-16 flex flex-col items-center justify-between ">
+          <h2 className="text-4xl font-ibm mb-2">Menu</h2>
 
-        <p className="text-lg mb-14 ">
-          Perfect <span className="text-orange-500">pizza</span> menu.
-        </p>
-
-        {isLoading ? (
-          <p className="w-full text-center text-lg text-pizza_dark">
-            Loading...
+          <p className="text-lg mb-14 ">
+            Perfect <span className="text-orange-500">pizza</span> menu.
           </p>
-        ) : (
-          <div className="grid grid-col-1 md:grid-cols-3 gap-4 md:gap-24">
-            {/* {data?.map((item) => {
+
+          {isLoading ? (
+            <p className="w-full text-center text-lg text-pizza_dark">
+              Loading...
+            </p>
+          ) : (
+            <div className="grid grid-col-1 md:grid-cols-3 gap-4 md:gap-24">
+              {/* {data?.map((item) => {
               <ProductCard item={item} />;
             })} */}
 
-            {data?.map((item) => {
-              return (
-                <>
+              {data?.map((item) => {
+                return (
                   <article
                     key={item.name}
                     className="transparent_border hover:border-pizza_green-50/20 rounded-2xl hover:-translate-y-2 transition-all linear cursor-pointer"
@@ -125,26 +125,26 @@ const Menu = () => {
                       </div>
                     </div>
                   </article>
-                  <Modal
-                    modal={modal}
-                    setModal={setModal}
-                    label={"singleProduct"}
-                    data={modalItem}
-                  />
-                </>
-              );
-            })}
-          </div>
-        )}
+                );
+              })}
+            </div>
+          )}
 
-        <Link
-          className="btn_ghost border-[1px] border-pizza_wood-100 hover:bg-pizza_wood-100 hover:text-white mt-20 text-xl"
-          href={"/menu"}
-        >
-          Check full menu...
-        </Link>
-      </div>
-    </section>
+          <Link
+            className="btn_ghost border-[1px] border-pizza_wood-100 hover:bg-pizza_wood-100 hover:text-white mt-20 text-xl"
+            href={"/menu"}
+          >
+            Check full menu...
+          </Link>
+        </div>
+      </section>
+      <Modal
+        modal={modal}
+        setModal={setModal}
+        label={"singleProduct"}
+        data={modalItem}
+      />
+    </>
   );
 };
 
