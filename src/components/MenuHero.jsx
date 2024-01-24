@@ -30,7 +30,7 @@ const MenuHero = () => {
           </p>
         ) : (
           <div className="max-w-6xl m-auto grid grid-col-1 md:grid-cols-3 md:gap-24">
-            {data.map((item) => {
+            {data?.map((item) => {
               return <ProductCard item={item} />;
             })}
           </div>

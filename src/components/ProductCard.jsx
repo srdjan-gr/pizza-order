@@ -10,13 +10,13 @@ const ProductCard = ({ item }) => {
   const [modal, setModal] = useState(false);
   const [modalItem, setModalItem] = useState({});
 
-  const openModal = (item) => {
+  const openModal = (modalItem) => {
     setModal(true);
-    setModalItem(item);
+    setModalItem(modalItem);
   };
 
-  if (item.published) {
-    return (
+  return (
+    item.published && (
       <>
         <article
           key={item.name}
@@ -89,8 +89,8 @@ const ProductCard = ({ item }) => {
           data={modalItem}
         />
       </>
-    );
-  }
+    )
+  );
 };
 
 export default ProductCard;

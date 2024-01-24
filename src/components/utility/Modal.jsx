@@ -11,7 +11,7 @@ const Modal = ({ label, modal, setModal, data }) => {
       <div
         className={`${
           modal ? "visible" : "invisible"
-        } fixed top-0 left-0 w-full h-screen z-50 bg-black/40 flex items-center justify-center transition-all ease-in-out delay-350 `}
+        } fixed top-0 left-0 w-full h-screen z-50 bg-black/20 flex items-center justify-center transition-all ease-in-out delay-350 `}
       >
         <SingleProduct data={data} />
         <IoClose

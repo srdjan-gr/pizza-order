@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ProductCard from "@/components/ProductCard";
-
 import { MdEuroSymbol } from "react-icons/md";
 import { IoReaderOutline } from "react-icons/io5";
 import Slider from "react-slick";
@@ -151,11 +150,6 @@ const BestSellers = () => {
             </Slider>
           )}
         </div>
-
-        {/* <div className="flex items-center mt-12 gap-10">
-        <IoIosArrowDropleft className="w-10 h-10 text-gray-300 cursor-pointer hover:text-gray" />
-        <IoIosArrowDropright className="w-10 h-10 text-gray-300 cursor-pointer hover:text-gray" />
-      </div> */}
       </section>
       <Modal
         modal={modal}
