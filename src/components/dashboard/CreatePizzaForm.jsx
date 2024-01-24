@@ -78,8 +78,11 @@ const CreatePizzaForm = () => {
     <section className="w-full ">
       <h2 className="text-xl underline text-gray-400 mb-8">New pizza</h2>
 
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex items-start justify-center flex-wrap w-full gap-10">
+      <form
+        onSubmit={handleFormSubmit}
+        className="w-full flex flex-col md:flex-row justify-start items-end gap-5"
+      >
+        <div className="flex flex-col lg:flex-row items-start justify-center flex-wrap w-full gap-10">
           <div>
             <ImageUpload
               image={image}
@@ -90,7 +93,7 @@ const CreatePizzaForm = () => {
             />
           </div>
 
-          <div className="w-1/3">
+          <div className="w-full lg:w-1/3">
             {/*Pizza Name*/}
             <div className="form-control w-full max-w-sm mb-2">
               <label className="label">
@@ -155,7 +158,7 @@ const CreatePizzaForm = () => {
           </div>
 
           {/*Pizza Size and Price */}
-          <div className="w-1/3">
+          <div className="w-full lg:w-1/3">
             <label className="label">
               <span className="label-text text-gray-400">Pizza Name</span>
             </label>

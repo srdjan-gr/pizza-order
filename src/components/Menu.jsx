@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import Link from "next/link";
 import { MdEuroSymbol } from "react-icons/md";
-import { IoReaderOutline } from "react-icons/io5";
+import { HiOutlineShoppingCart } from "react-icons/hi2";
 import Modal from "./utility/Modal";
 import Image from "next/image";
 
@@ -13,8 +13,6 @@ const Menu = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [modal, setModal] = useState(false);
   const [modalItem, setModalItem] = useState({});
-
-  console.log(data);
 
   const openModal = (modalItem) => {
     setModal(true);
@@ -74,7 +72,7 @@ const Menu = () => {
                       />
 
                       <div className=" text-pizza_black">
-                        <h2 className="text-xl mb-3 font-bold">
+                        <h2 className="text-xl mb-3 font-bold underline">
                           Pizza {item.name}
                         </h2>
 
@@ -112,14 +110,14 @@ const Menu = () => {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-between text-pizza_black mb-3 gap-3">
-                          <button className="btn_main bg-pizza_green-400 hover:bg-pizza_green-300 text-white w-1/2">
+                        <div className="flex items-center justify-between text-pizza_black mb-3 gap-4 w-full">
+                          <button className="btn_main bg-pizza_green-400 hover:bg-pizza_green-300 text-white w-full">
                             Order
                           </button>
 
                           <Link
                             href={"/menu"}
-                            className="btn_ghost border-[1px] border-pizza_wood-400 hover:bg-pizza_wood-400 hover:text-white w-1/2"
+                            className="btn_ghost border-[1px] border-pizza_wood-400 hover:bg-pizza_wood-400 hover:text-white w-full"
                           >
                             Menu
                           </Link>

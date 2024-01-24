@@ -37,7 +37,7 @@ const dashboardMenuLinksAdmin = [
   },
   {
     title: "Pizza Menu",
-    href: "/menu",
+    href: "/dash-menu",
     icon: <HiOutlineDocumentText className="ml-3 h-6 w-6" />,
   },
   {

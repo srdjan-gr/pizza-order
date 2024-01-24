@@ -3,7 +3,7 @@ import SingleProduct from "@/components/SingleProduct";
 
 const Modal = ({ label, modal, setModal, data }) => {
   const closeModal = () => {
-    setModal(close);
+    setModal(false);
   };
 
   if (label === "singleProduct") {

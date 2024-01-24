@@ -129,7 +129,7 @@ const BestSellers = () => {
                             </div>
                           </div>
 
-                          <div className="flex items-center justify-between text-pizza_black mb-3 gap-3">
+                          <div className="flex items-center justify-between text-pizza_black mb-3 gap-4">
                             <button className="btn_main bg-pizza_green-400 hover:bg-pizza_green-300 text-white w-1/2">
                               Order
                             </button>
