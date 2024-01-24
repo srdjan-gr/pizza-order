@@ -19,10 +19,13 @@ const MenuSchema = new Schema(
       requireed: true,
       unique: true,
     },
+    allergens: {
+      type: String,
+      requireed: true,
+    },
     ingredients: {
       type: String,
       requireed: true,
-      // unique: true,
     },
     sizeAndPrice: {
       type: [sizeAndPriceShema],

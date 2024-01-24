@@ -31,13 +31,13 @@ const Page = () => {
   }, [session, sessionStatus]);
 
   // Spiner for page loading
-  if (session.status === "loading" || isLoadingProfile) {
-    return <Loading />;
-  }
-
-  // if (!isAdminProfile) {
-  //   return <BackToLogin />;
+  // if (session.status === "loading" || isLoadingProfile) {
+  //   return <Loading />;
   // }
+
+  if (!isAdminProfile) {
+    return <BackToLogin />;
+  }
 
   return (
     <section className="max-w-7xl min-h-screen m-auto pt-5">

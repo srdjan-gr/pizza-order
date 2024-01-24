@@ -9,7 +9,7 @@ const DashboardCategoryForm = ({ setIsCreatedCategory, IsCreatedCategory }) => {
 
       <div className="w-full md:w-44">
         <Link
-          href={"/menu/new-pizza"}
+          href={"/dash-menu/new-pizza"}
           className=" btn_ghost border-[1px] border-pizza_green-500 text-pizza_black rounded-full hover:bg-pizza_green-500 hover:border-[1px] hover:border-pizza_green-50/50 hover:text-white w-full"
         >
           Create new Pizza
