@@ -3,11 +3,12 @@ import ImageUpload from "./ImageUpload";
 import Spinner from "../utility/Spinner";
 import toast from "react-hot-toast";
 import { IoTrashOutline } from "react-icons/io5";
-import { FaHeartPulse } from "react-icons/fa6";
+import slugify from "react-slugify";
 
 const CreatePizzaForm = () => {
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
+  const [slug, setSlug] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [allergens, setAllergens] = useState("");
   const [sizeAndPrice, setSizeAndPrice] = useState([]);
@@ -29,6 +30,7 @@ const CreatePizzaForm = () => {
     const data = {
       image,
       name,
+      slug,
       allergens,
       ingredients,
       sizeAndPrice,
@@ -46,6 +48,7 @@ const CreatePizzaForm = () => {
       setImagePreview("");
       setImage("");
       setName("");
+      setSlug("");
       setAllergens("");
       setIngredients("");
       setSizeAndPrice([]);
@@ -106,7 +109,25 @@ const CreatePizzaForm = () => {
                 className="input input-bordered w-full max-w-xs input-md rounded-xl"
                 disabled={isCreating}
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => {
+                  setName(e.target.value), setSlug(slugify(e.target.value));
+                }}
+              />
+            </div>
+
+            {/*Pizza Slug*/}
+            <div className="form-control w-full max-w-sm mb-2">
+              <label className="label">
+                <span className="label-text text-gray-400">Pizza Slug</span>
+              </label>
+
+              <input
+                type="text"
+                placeholder="Pizza slug"
+                className="input input-bordered w-full max-w-xs input-md rounded-xl"
+                disabled
+                value={slug}
+                // onChange={(e) => setSlug(createSlug())}
               />
             </div>
 

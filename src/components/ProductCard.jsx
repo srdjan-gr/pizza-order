@@ -70,9 +70,12 @@ const ProductCard = ({ item }) => {
               </div>
 
               <div className="flex items-center justify-between text-pizza_black mb-3 gap-4 w-full">
-                <button className="btn_main bg-pizza_green-400 hover:bg-pizza_green-300 text-white w-full">
+                <Link
+                  href={`/order/${item.name}`}
+                  className="btn_main bg-pizza_green-400 hover:bg-pizza_green-300 text-white w-full"
+                >
                   Order
-                </button>
+                </Link>
 
                 <Link
                   href={"/menu"}

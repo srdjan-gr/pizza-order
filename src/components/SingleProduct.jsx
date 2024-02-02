@@ -7,6 +7,7 @@ import ingredients from "../../public/images/ingredients.png";
 import serving from "../../public/images/pizza.png";
 import price from "../../public/images/money.png";
 import size from "../../public/images/meter.png";
+import Link from "next/link";
 
 const SingleProduct = ({ data }) => {
   if (Object.keys(data).length > 0) {
@@ -122,9 +123,12 @@ const SingleProduct = ({ data }) => {
             </div>
 
             <div className="w-full flex justify-center gap-5">
-              <button className="btn_main bg-pizza_green-400 hover:bg-pizza_green-300 text-white w-1/2">
+              <Link
+                href={`/order/${data.name}`}
+                className="btn_main bg-pizza_green-400 hover:bg-pizza_green-300 text-white w-1/2"
+              >
                 Order
-              </button>
+              </Link>
               <button className="btn_ghost border-[1px] border-pizza_wood-400 hover:bg-pizza_wood-300 hover:text-white w-1/2">
                 Add to cart
               </button>

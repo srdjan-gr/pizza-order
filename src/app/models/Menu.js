@@ -19,6 +19,11 @@ const MenuSchema = new Schema(
       requireed: true,
       unique: true,
     },
+    slug: {
+      type: String,
+      requireed: true,
+      unique: true,
+    },
     allergens: {
       type: String,
       requireed: true,
